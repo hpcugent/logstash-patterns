@@ -4,8 +4,8 @@ ICINGA_FIELD ([^;]+)
 
 ICINGA_HOST ([-\w.]+)
 
-ICINGA_SERVICE_BODY {ICINGA_HOST:host};%{ICINGA_FIELD:check};%{ICINGA_FIELD:status};%{ICINGA_FIELD:status_type};%{INT:count};%{GREEDY_DATA:check_output}
+ICINGA_SERVICE_BODY %{ICINGA_FIELD:check};%{ICINGA_FIELD:status};%{ICINGA_FIELD:status_type};%{INT:count};%{GREEDYDATA:check_output}
 
-ICINGA_HOST_BODY {ICINGA_HOST:host};%{ICINGA_FIELD:status};%{ICINGA_FIELD:status_type};%{INT:count};%{GREEDY_DATA:check_output}
+ICINGA_HOST_BODY %{ICINGA_FIELD:status};%{ICINGA_FIELD:status_type};%{INT:count};%{GREEDYDATA:check_output}
 
-ICINGA_MESSAGE \[%{NONNEGINT:timestamp}\]%{SPACE}%{ICINGA_CLASS:class}:{%SPACE}(%{ICINGA_SERVICE_BODY}|%{ICINGA_HOST_BODY})
+ICINGA_MESSAGE \[%{NONNEGINT:timestamp}\]%{SPACE}%{ICINGA_CLASS:class}%{SPACE}%{ICINGA_HOST:host};(?:%{ICINGA_SERVICE_BODY}|%{ICINGA_HOST_BODY})
