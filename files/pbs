@@ -1,2 +1,2 @@
 OP (?:[^;]*)
-PBS_LOG %{DATE_US:timestamp};%{NONNEGINT};PBS_Server;%{OP:opcode};%{OP:method};%{GREEDYDATA:txt}
+PBS_LOG %{DATESTAMP:timestamp};%{NONNEGINT};PBS_Server;%{OP:opcode};%{OP:method};%{GREEDYDATA:txt}
