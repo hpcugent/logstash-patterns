@@ -1,7 +1,7 @@
 %define instdir %{?_datarootdir}%{!?_datarootdir:%{_datadir}}/grok
 
 Name: logstash-patterns
-Version: 0.1.5
+Version: 0.1.6
 Release: 1%{?dist}
 Summary: GROK patterns for parsing the logs from different services.
 Group: Applications/System
