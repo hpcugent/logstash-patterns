@@ -1,0 +1,24 @@
+## aptana/eclipse
+*.project
+*.pydevproject
+## quattor build xml
+quattor/build
+## python
+*.pyc
+*.pyo
+## emacs
+*~
+.#*
+*.orig
+*.bak
+## Various build products
+*.rpm
+*.o
+*.old
+*.DS_Store
+
+## Python __init__.py files for distributed packages
+rpms/python-vsc-packages-*/vsc/__init__.py
+MANIFEST
+dist/
+build/
