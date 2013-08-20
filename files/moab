@@ -1,6 +1,6 @@
 MOABSEVERITY (?:ALERT|ERROR|INFO|WARNING):
 MOABDATE %{MONTHNUM}/%{MONTHDAY}%{SPACE}%{TIME}
 MOABFUNC [a-zA-Z]\w+\(.*\)
-MOABJOBLOG (?:job '%{POSINT}'%{SPACE}State:%{WORD:state}%{SPACE}Expected%{SPACE}State:%{SPACE}%{WORD:current_state}%{DATA}
+MOABJOBLOG (?:job '%{POSINT}'%{SPACE}State:%{WORD:state}%{SPACE}Expected%{SPACE}State:%{SPACE}%{WORD:current_state}%{DATA})
 MOABDATA %{MOABJOBLOG}|(?:%{MOABSEVERITY:severity}%{SPACE}%{GREEDYDATA})|%{MOABFUNC:funcname}
 MOABLOG %{MOABDATE:timestamp}%{SPACE}%{MOABDATA:realmsg}
