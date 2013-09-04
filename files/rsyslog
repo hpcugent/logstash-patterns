@@ -1,0 +1,4 @@
+SSH_STATUS (?:Accepted|Failed|(?:Invalid user))
+SSH_MESSAGE %{SSH_STATUS:status} %{WORD:method} for %{WORD:user} from %{IP:ip) port %{NONNEGINT:port}
+
+RSYSLOG %{TIMESTAMP_ISO8601:timestamp} %{SYSLOGHOST:host} %{SYSLOGPROG}: (?:%{SSH_MESSAGE}|%{DATA:message})
