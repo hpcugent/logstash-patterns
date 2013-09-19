@@ -1,4 +1,8 @@
-SSH_STATUS (?:Accepted|Failed|(?:Invalid user))
+SSH_STATUS (?:Accepted|Failed)
 SSH_MESSAGE %{SSH_STATUS:status} %{WORD:method} for %{WORD:user} from %{IP:ip) port %{NONNEGINT:port}
 
-RSYSLOG %{TIMESTAMP_ISO8601:timestamp} %{SYSLOGHOST:host} %{SYSLOGPROG}: (?:%{SSH_MESSAGE}|%{DATA:message})
+INVALID_USER_STATUS Invalid user
+
+INVALID_SSH_MESSAGE %{INVALID_USER_STATUS:status} %{WORD:user} from %{IP}
+
+RSYSLOG %{TIMESTAMP_ISO8601:timestamp} %{SYSLOGHOST:host} %{SYSLOGPROG}: (?%{SSH_MESSAGE}|%{INVALID_SSH_MESSAGE}|%{DATA:message})
