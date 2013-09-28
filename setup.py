@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: latin-1 -*-
 #
-# Copyright 2009-2012 Ghent University
+# Copyright 2009-2013 Ghent University
 #
 # This file is part of VSC-tools,
 # originally created by the HPC team of Ghent University (http://ugent.be/hpc/en),
@@ -32,7 +32,7 @@ from distutils.core import setup
 import glob
 
 setup(name="logstash-patterns",
-      version="1.0.5",
+      version="1.0.6",
       description="Grok patterns for logstash",
       long_description="""Grok patterns for parsing log messages with logstash.
 
