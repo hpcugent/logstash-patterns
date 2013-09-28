@@ -5,3 +5,5 @@ services with [Logstash](http://logstash.net).
 
 Use [this app](https://grokdebug.herokuapp.com/) for debugging your
 patterns!
+
+When issuing pull requests to this repository, don't forget to include an example of the messages your commits try to parse!!
