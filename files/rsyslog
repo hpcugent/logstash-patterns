@@ -6,3 +6,4 @@ INVALID_USER_STATUS Invalid user
 INVALID_SSH_MESSAGE %{INVALID_USER_STATUS:status} %{WORD:user} from %{IP}
 
 RSYSLOG %{TIMESTAMP_ISO8601:timestamp} %{SYSLOGHOST:host} %{SYSLOGPROG}: (?:%{SSH_MESSAGE}|%{INVALID_SSH_MESSAGE}|%{DATA:message})
+RSYSLOGCUSTOM %{TIMESTAMP_ISO8601:syslog_timestamp} %{IPORHOST:syslog_hostname} (?:%{PROG:program}(?:\[%{POSINT:pid}\])?: )?(?:%{SSH_MESSAGE}|%{INVALID_SSH_MESSAGE}|%{GREEDYDATA:syslog_message})
