@@ -4,6 +4,8 @@ SSH_MESSAGE %{SSH_STATUS:status} %{WORD:method} for %{WORD:user} from %{IP:ip) p
 INVALID_USER_STATUS Invalid user
 
 INVALID_SSH_MESSAGE %{INVALID_USER_STATUS:status} %{WORD:user} from %{IP}
+MODULECMD_MSG - modulecmd::  U%{DATA:user} H%{DATA:host} VC%{DATA:cluster} VAL%{DATA:architecture} ID%{DATA:jobid} %{DATA:modulecmd_shell}_%{DATA:modulecmd_cmd}_%{DATA:module_name}@%{GREEDYDATA:module_version}
+
 
 RSYSLOG %{TIMESTAMP_ISO8601:timestamp} %{SYSLOGHOST:host} %{SYSLOGPROG}: (?:%{SSH_MESSAGE}|%{INVALID_SSH_MESSAGE}|%{DATA:message})
-RSYSLOGCUSTOM %{TIMESTAMP_ISO8601:syslog_timestamp} %{IPORHOST:syslog_hostname} (?:%{PROG:program}(?:\[%{POSINT:pid}\])?: )?(?:%{SSH_MESSAGE}|%{INVALID_SSH_MESSAGE}|%{GREEDYDATA:syslog_message})
+RSYSLOGCUSTOM %{TIMESTAMP_ISO8601:syslog_timestamp} %{IPORHOST:syslog_hostname} (?:%{PROG:program}(?:\[%{POSINT:pid}\])?: )?(?:%{SSH_MESSAGE}|%{INVALID_SSH_MESSAGE}|%{MODULECMD_MSG}|%{GREEDYDATA:syslog_message})
