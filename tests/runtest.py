@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import json
 import os
+import pprint
 import re
 import shutil
 import sys
@@ -70,13 +71,11 @@ def main():
             if not unicode(k) in out:
                 print "key %s missing from output %s for inp %s" % (k, out, inp)
                 sys.exit(1)
+
             res_out = out[unicode(k)]
-            if isinstance(v, basestring):
-                eq = res_out == unicode(v)
-            else:
-                eq = res_out == v
-            if not eq:
+            if not unicode(res_out) == unicode(v):
                 print "key %s value %s (type %s), expected %s (type %s)" % (k, res_out, type(res_out), v, type(v))
+                print "Full out %s" % (pprint.pprint(out))
                 sys.exit(1)
 
     print "Verified %s lines with %s subtests. All OK" % (counter[0], counter[1])
