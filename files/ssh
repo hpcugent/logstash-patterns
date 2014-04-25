@@ -1,0 +1,6 @@
+SSH_STATUS (?:Accepted|Failed)
+SSH_MESSAGE %{SSH_STATUS:status} %{WORD:method} for %{WORD:user} from %{IP:ip) port %{NONNEGINT:port}
+
+INVALID_USER_STATUS Invalid user
+
+INVALID_SSH_MESSAGE %{INVALID_USER_STATUS:status} %{WORD:user} from %{IP}

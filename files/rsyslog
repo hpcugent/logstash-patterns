@@ -1,12 +1,4 @@
-SSH_STATUS (?:Accepted|Failed)
-SSH_MESSAGE %{SSH_STATUS:status} %{WORD:method} for %{WORD:user} from %{IP:ip) port %{NONNEGINT:port}
 
-INVALID_USER_STATUS Invalid user
-
-INVALID_SSH_MESSAGE %{INVALID_USER_STATUS:status} %{WORD:user} from %{IP}
-
-MODULE_NAME_AND_OR_VERSION (?:%{DATA:module_name}@%{GREEDYDATA:module_version}|%{GREEDYDATA:module_name})
-MODULECMD_MSG - modulecmd::  U%{DATA:user} H%{DATA:host} VC%{DATA:cluster} VAL%{DATA:architecture} ID%{DATA:jobid} %{DATA:modulecmd_shell}_%{DATA:modulecmd_cmd}_%{MODULE_NAME_AND_OR_VERSION}
-
-RSYSLOG %{TIMESTAMP_ISO8601:timestamp} %{SYSLOGHOST:host} %{SYSLOGPROG}: (?:%{SSH_MESSAGE}|%{INVALID_SSH_MESSAGE}|%{DATA:message})
-RSYSLOGCUSTOM %{TIMESTAMP_ISO8601:syslog_timestamp} %{IPORHOST:syslog_hostname} (?:%{PROG:program}(?:\[%{POSINT:pid}\])?: )?(?:%{SSH_MESSAGE}|%{INVALID_SSH_MESSAGE}|%{MODULECMD_MSG}|%{GREEDYDATA:syslog_message})
+RSYSLOGMESSAGE (?:%{SSH_MESSAGE}|%{INVALID_SSH_MESSAGE}|%{MODULECMD_MSG}|%{CEPH_MSG}|%{GREEDYDATA:syslog_message})
+RSYSLOGCUSTOMHEADER (?:(?:<%{NONNEGINT:syslog_abspri}>)?(?<syslog_timestamp>%{TIMESTAMP_ISO8601:}|%{SYSLOGTIMESTAMP}))
+RSYSLOGCUSTOM %{RSYSLOGCUSTOMHEADER} %{IPORHOST:syslog_hostname} (?:%{PROG:program}(?:\[%{POSINT:pid}\])?: )?%{RSYSLOGMESSAGE}
