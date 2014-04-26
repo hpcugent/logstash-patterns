@@ -1,0 +1,19 @@
+data = [
+
+{
+    "raw" : "<13>1 2014-04-25T10:56:34.361503+02:00 node2110 modulecmd: - modulecmd::  Uvsc41088 Hnode2110.delcatty.os VCdelcatty VALsandybridge ID347398.master15.delcatty.gent.vsc bash_load_ifort",
+    "expected": {
+        "program": "modulecmd",
+        "user": "vsc41088",
+        "cluster": "delcatty",
+        "architecture": "sandybridge",
+        "jobid": "347398.master15.delcatty.gent.vsc",
+        "modulecmd_shell": "bash",
+        "modulecmd_cmd": "load",
+        "module_name": "ifort",
+        "@source_host": "node2110",
+    }
+},
+
+]
+

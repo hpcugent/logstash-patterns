@@ -1,0 +1,25 @@
+data = [
+
+{
+    "raw": "<5>1 2014-04-14T03:47:01.011933+02:00 node2011 kernel: - kernel:: nfs: server 172.24.11.14 not responding, timed out",
+    "expected" :{
+        '@source_host': 'node2011',
+        'nfsreason': 'not responding, timed out',
+        'nfsserver': '172.24.11.14',
+        'program': 'kernel',
+        'syslog_abspri': '5',
+        'syslog_version': '1',
+    }
+},
+{
+    "raw": "<4>1 2014-03-28T16:04:31.916838+01:00 node001 kernel: - kernel:: Error: state recovery failed on NFSv4 server 172.24.11.14 with error 2",
+    "expected" :{
+        'nfsreason': 'state recovery failed',
+        'nfsserver': '172.24.11.14',
+        'program': 'kernel',
+        'syslog_abspri': '4',
+        'syslog_version': '1',
+    }
+},
+
+]

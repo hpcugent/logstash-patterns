@@ -1,0 +1,12 @@
+data = [
+{
+    "raw": "<86>Apr 26 09:00:55 master2 snoopy[1301]: [uid:110 sid:8322 tty: cwd:/ filename:/bin/cut]: cut -d ; -f 4 ", 
+    "expected" : {
+        "program": "snoopy",
+        "pid": "1301",
+        "@source_host": "master2",
+        "@message": "[uid:110 sid:8322 tty: cwd:/ filename:/bin/cut]: cut -d ; -f 4 ",
+    }
+},
+
+]
