@@ -1,0 +1,4 @@
+NFS_GENERAL .*? nfs: server %{IPORHOST:nfsserver} %{DATA:nfsreason}$
+NFS_NFS4_GENERAL .*?: (?<nfsreason>[^:]*) on NFSv4 server %{IPORHOST:nfsserver}
+
+NFS_MSG (?:%{NFS_GENERAL}|%{NFS_NFS4_GENERAL})
