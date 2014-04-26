@@ -41,5 +41,7 @@ Can be debugged on https://grokdebug.herokuapp.com/ or via the runtest.py in tes
       license="LGPL",
       author="HPC UGent",
       author_email="hpc-admin@lists.ugent.be",
-      data_files=[("/usr/share/grok", glob.glob("files/*"))],
+      data_files=[("/usr/share/grok", glob.glob("files/*")),
+                  ("/usr/share/logstash/filters", glob.glob("logstash/filters/*")),
+                  ],
       url="http://www.ugent.be/hpc")
