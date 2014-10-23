@@ -1,0 +1,16 @@
+# oldstyle
+SSH_STATUS (?:Accepted|Failed)
+SSH_INVALID_USER Invalid user
+
+SSH_MESSAGE_CONNECTION %{SSH_STATUS:status}
+SSH_MESSAGE_INVALID %{SSH_INVALID_USER:status} %{WORD:user} from %{IP}
+
+#newstyle
+SSH_SUBSYSTEM subsystem request for (?<subsystem>.*)
+SSH_DISCONNECT Received disconnect from %{IPORHOST:ip}: %{NONNEGINT}: (?<reason>disconnected by user)$
+SSH_VALID_INVALID (?<status>Accepted|Failed|Invalid user)(?: %{WORD:method} for)? %{WORD:user} from %{IPORHOST:ip}(?: port %{NONNEGINT:port})?
+SSH_INPUT_USERAUTH input_userauth_request: (?<inputuserauth>invalid user %{WORD})
+
+SSH_PAM_SESSION pam_unix\(sshd:session\): session %{WORD:sshsession} for user %{WORD:user}
+
+SSH_MESSAGE (?:%{SSH_VALID_INVALID}|%{SSH_PAM_SESSION}|%{SSH_DISCONNECT}|%{SSH_SUBSYSTEM}|%{SSH_INPUT_USERAUTH})

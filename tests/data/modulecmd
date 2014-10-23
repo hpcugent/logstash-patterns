@@ -1,0 +1,51 @@
+data = [
+
+{
+    "raw" : "<13>1 2014-04-25T10:56:34.361503+02:00 node2110 modulecmd: - modulecmd::  Uvsc41088 Hnode2110.delcatty.os VCdelcatty VALsandybridge ID347398.master15.delcatty.gent.vsc bash_load_ifort",
+    "expected": {
+        "program": "modulecmd",
+        "user": "vsc41088",
+        "cluster": "delcatty",
+        "architecture": "sandybridge",
+        "jobid": "347398.master15.delcatty.gent.vsc",
+        "modulecmd_shell": "bash",
+        "modulecmd_cmd": "load",
+        "module_name": "ifort",
+        "@source_host": "node2110",
+    }
+},
+
+{
+    "raw" : "<13>Apr 28 16:13:54 node843 modulecmd: Uvsc40769 Hnode843.raichu.os VCraichu VALsandybridge ID463808.master13.raichu.gent.vsc bash_load_scikit-learn@0.14-ictce-5.5.0-Python-2.7.6",
+    "expected" : {
+        'architecture': 'sandybridge',
+        'cluster': 'raichu',
+        'jobid': '463808.master13.raichu.gent.vsc',
+        'module_name': 'scikit-learn',
+        'module_version': '0.14-ictce-5.5.0-Python-2.7.6',
+        'modulecmd_cmd': 'load',
+        'modulecmd_shell': 'bash',
+        'program': 'modulecmd',
+        'syslog_abspri': '13',
+        'user': 'vsc40769',
+    },
+},
+
+{
+    "raw": "<13>Apr 28 16:14:14 node861 modulecmd: Uvsc40769 Hnode861.raichu.os VCraichu VALsandybridge ID bash_load_cluster@raichu",
+    "expected" : {
+        'architecture': 'sandybridge',
+        'cluster': 'raichu',
+        'module_version': 'raichu',
+        'module_name': 'cluster',
+        'modulecmd_cmd': 'load',
+        'modulecmd_shell': 'bash',
+        'program': 'modulecmd',
+        'syslog_abspri': '13',
+        'user': 'vsc40769',
+    },
+},
+
+
+]
+

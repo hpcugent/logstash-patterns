@@ -1,0 +1,3 @@
+MODULE_NAME_AND_OR_VERSION (?:%{DATA:module_name}@%{GREEDYDATA:module_version}|%{GREEDYDATA:module_name})
+MODULECMD_MSG (?:- modulecmd::  )?U%{DATA:user} H%{DATA:host} VC%{DATA:cluster} VAL%{DATA:architecture} ID%{DATA:jobid} %{DATA:modulecmd_shell}_%{DATA:modulecmd_cmd}_%{MODULE_NAME_AND_OR_VERSION}
+

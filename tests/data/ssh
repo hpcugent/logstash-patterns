@@ -1,0 +1,62 @@
+
+data = [
+
+{
+    "raw": "<86>Apr 26 11:25:44 node2104 sshd[44668]: pam_unix(sshd:session): session opened for user vsc40000 by (uid=0)",
+    "expected": {  
+        'program': 'sshd',
+        'sshsession': 'opened',
+        'syslog_abspri': '86',
+        'user': 'vsc40000',
+    }
+},
+{
+    "raw": "<86>Apr 26 11:25:44 node2104 sshd[44556]: pam_unix(sshd:session): session closed for user vsc40000",
+    "expected": {  
+        'program': 'sshd',
+        'sshsession': 'closed',
+        'syslog_abspri': '86',
+        'user': 'vsc40000',
+    }
+},
+
+{
+    "raw": "<86>Apr 26 11:25:44 node2104 sshd[44668]: Accepted publickey for vsc40000 from 172.24.13.2 port 43493 ssh2",
+    "expected" : {
+        'method': 'publickey',
+        'pid': '44668',
+        'port': '43493',
+        'program': 'sshd',
+        'status': 'Accepted',
+        'syslog_abspri': '86',
+        'user': 'vsc40000',
+    }
+},
+
+{
+    "raw": "<86>Apr 26 11:25:44 node2104 sshd[44558]: Received disconnect from 172.24.13.2: 11: disconnected by user",
+    "expected" : {
+        'ip': '172.24.13.2',
+        'pid': '44558',
+        'program': 'sshd',
+        'reason': 'disconnected by user',
+    },
+},
+
+{
+    "raw": "<86>Apr 26 11:22:40 gligar03 sshd[9697]: subsystem request for sftp",
+    "expected" : {
+        'program': 'sshd',
+        'subsystem': 'sftp',
+    },
+},
+{
+    "raw": "<86>Apr 26 11:17:51 gligar02 sshd[11243]: input_userauth_request: invalid user vsc40000",
+    "expected" : {
+        'inputuserauth': 'invalid user vsc40000',
+        'pid': '11243',
+        'program': 'sshd',
+    },
+},
+
+]

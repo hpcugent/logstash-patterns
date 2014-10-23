@@ -1,0 +1,29 @@
+data = [
+
+{
+    "raw":"<30>Apr 25 16:31:56 ceph002 ceph-mon: 2014-04-25 16:31:55.419574 mon.0 10.141.8.180:6789/0 446576 : [INF] pgmap v630722: 1312 pgs: 41 active+remapped+wait_backfill+backfill_toofull, 24 active+recovery_wait+remapped, 1033 active+clean, 19 active+recovering+remapped, 4 active+degraded+remapped+backfilling, 1 active+degraded+remapped+wait_backfill, 4 active+recovery_wait, 11 active+recovering, 8 active+clean+scrubbing+deep, 91 active+remapped+backfilling, 62 active+remapped+wait_backfill, 3 active+degraded+remapped+wait_backfill+backfill_toofull, 10 active+remapped+backfill_toofull, 1 active+recovering+degraded+remapped; 36753 GB data, 101 TB used, 30931 GB / 131 TB avail; 0 B/s wr, 161 op/s; 12675482/110833141 objects degraded (11.437%); 6157 kB/s, 6 objects/s recovering",
+    "expected": {
+        "actwrite": 0,
+        "actops": 161,
+        "objdegraded": 12675482,
+        "objtotal": 110833141,
+        "objrecovthr": 6157000,
+        "objrecovhz": 6,
+        "volumedata": 36753000000000,
+        "volumeused": 101000000000000,
+        "volumeavail": 30931000000000, 
+        "volumetotal": 131000000000000,
+        'objdegraded': '12675482',
+        'objrecovhz': '6',
+        'objrecovthr': 6157000,
+        'objtotal': '110833141',
+        'pgmapv': '630722',
+        'pgs': '1312',
+        'program': 'ceph-mon',
+        'syslog_abspri': 30,
+        '@source_host': 'ceph002',
+        'active_clean': '1033',
+    }
+},
+
+]
