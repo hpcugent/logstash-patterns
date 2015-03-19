@@ -169,7 +169,7 @@ if __name__ == '__main__':
     elif go.options.last:
         indices = [-1]
     elif go.options.entries:
-        indices = go.options.entries
+        indices = [int(x) for x in go.options.entries]
 
     _log = go.log
 

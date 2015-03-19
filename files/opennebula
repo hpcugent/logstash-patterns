@@ -1,5 +1,13 @@
 # [Z0][VMM][D]: VM 65 successfully monitored: STATE=a USEDCPU=1.0 USEDMEMORY=4381156 NETRX=131913740597 NETTX=25058980345
+# [VM 149][Z0][LCM][I]: New VM state is RUNNING
+# [Z0][ONE][E]: Error monitoring Host hyp101 (29): Error executing probes
+# [Z0][VM][I]: Dispatching VM 149 to host 32 and datastore 0
 
-OPENNEBULA_ONED_MONITOR_VM .*?: VM %{INT:vmid}
+OPENNEBULA_ONED_MONITOR_VM .*?\[%{WORD:level}\]: VM %{INT:vmid} .*?: STATE\=%{WORD:vmstate} USEDCPU\=%{BASE16FLOAT:vmucpu} USEDMEMORY\=%{INT:vmmem} NETRX\=%{INT:vmnetrx} NETTX\=%{INT:vmnettx}
+OPENNEBULA_ONED_MONITOR_HYP .*?\[%{WORD:level}\]: .*? monitoring Host %{WORD:hypervisor} \(%{INT:hostid}\)
+OPENNEBULA_ONED_VM_STATUS \[VM %{INT:vmid}\].*?\[%{WORD:level}\]: .*? state is %{WORD:vmstate}
+OPENNEBULA_SCHED_STATUS .*?\[%{WORD:level}\]: .*? VM %{INT:vmid} .*? host %{INT:hostid} .*? datastore %{INT:datastoreid}
+OPENNEBULA_ONED_GENERIC_VM \[VM %{INT:vmid}\].*?\[%{WORD:level}\]: .*?
 
-OPENNEBULA_MSG (?:%{OPENNEBULA_ONED_MONITOR_VM})
+
+OPENNEBULA_MSG (?:%{OPENNEBULA_ONED_MONITOR_VM}|%{OPENNEBULA_ONED_VM_STATUS}|%{OPENNEBULA_ONED_MONITOR_HYP}|%{OPENNEBULA_SCHED_STATUS}|%{OPENNEBULA_ONED_GENERIC_VM}|%{GREEDYDATA:syslog_message})
