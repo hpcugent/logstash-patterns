@@ -6,6 +6,10 @@
 
 """
 data = [
-
-
+{
+	"raw" : "2015-03-19T08:13:12.916717+01:00 one01 oned: [Z0][VMM][D]: VM 65 successfully monitored: STATE=a USEDCPU=1.0 USEDMEMORY=4381156 NETRX=131913740597 NETTX=25058980345",
+	"expected" : {
+		   "vmid" : "65",
+	}
+},
 ]

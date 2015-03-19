@@ -54,7 +54,7 @@ The raw message is what is being sent to logstash
 
 # set LOGSTASH_JAR=./logstash.jar
 # set PATH to find logstash
-# PATH=~/logstash/:$PATH LOGSTASH_JAR=~/logstash/logstash.jar ./runtest.py
+# JAVA_OPTS=-Djava.io.tmpdir=/var/tmp PATH=~/logstash/:$PATH LOGSTASH_JAR=~/logstash/logstash.jar ./runtest.py
 
 _log = None
 
