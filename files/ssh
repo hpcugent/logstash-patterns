@@ -14,4 +14,4 @@ SSH_AUTH_REFUSED .*?Authentication refused: bad ownership or modes for file %{PA
 
 SSH_PAM_SESSION pam_unix\(sshd:session\): session %{WORD:sshsession} for user %{WORD:user}
 
-SSH_MESSAGE (?:%{SSH_VALID_INVALID}|%{SSH_PAM_SESSION}|%{SSH_DISCONNECT}|%{SSH_SUBSYSTEM}|%{SSH_INPUT_USERAUTH}|%{SSH_AUTH_REFUSED}|%{GREEDYDATA:syslog_message})
+SSH_MESSAGE (?:%{SSH_VALID_INVALID}|%{SSH_PAM_SESSION}|%{SSH_DISCONNECT}|%{SSH_SUBSYSTEM}|%{SSH_INPUT_USERAUTH}|%{SSH_AUTH_REFUSED})
