@@ -58,5 +58,12 @@ data = [
         'program': 'sshd',
     },
 },
-
+{
+    "raw": "2015-03-18T14:09:15.962645+01:00 node2432 sshd[26270]: Authentication refused: bad ownership or modes for file /vscmnt/gent_vulpix/_/user/home/gent/vsc404/vsc40479/.ssh/authorized_keys",
+    "expected" : {
+        'ownerpath': '/vscmnt/gent_vulpix/_/user/home/gent/vsc404/vsc40479/.ssh/authorized_keys',
+        'pid': '26270',
+        'program': 'sshd',
+    },
+},
 ]
