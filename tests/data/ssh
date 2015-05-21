@@ -59,4 +59,69 @@ data = [
     },
 },
 
+# updated syslog raw data 26/03/2015
+
+{
+    "raw": "2015-03-18T14:09:15.962645+01:00 node2432 sshd[26270]: Authentication refused: bad ownership or modes for file /vscmnt/gent_vulpix/_/user/home/gent/vsc404/vsc40479/.ssh/authorized_keys",
+    "expected" : {
+        'ownerpath': '/vscmnt/gent_vulpix/_/user/home/gent/vsc404/vsc40479/.ssh/authorized_keys',
+        'pid': '26270',
+        'program': 'sshd',
+    },
+},
+{
+    "raw": "<86>1 2015-03-24T15:16:09.252883+01:00 gligar01 sshd[48764]: - sshd[48764]:: input_userauth_request: invalid user vsc40001",
+    "expected" : {
+        'inputuserauth': 'invalid user vsc40001',
+        'pid': '48764',
+        'program': 'sshd',
+    },
+},
+{
+    "raw": "<86>1 2015-03-20T11:00:59.922704+01:00 gligar01 sshd[9215]: - sshd[9215]:: subsystem request for sftp",
+    "expected" : {
+        'program': 'sshd',
+        'pid': '9215',
+        'subsystem': 'sftp',
+    },
+},
+{
+    "raw": "<86>1 2015-03-19T10:53:18.185704+01:00 hyp105 sshd[5170]: - sshd[5170]:: Received disconnect from 10.141.2.11: 11: disconnected by user",
+    "expected" : {
+        'ip': '10.141.2.11',
+        'pid': '5170',
+        'program': 'sshd',
+        'reason': 'disconnected by user',
+    },
+},
+{
+    "raw": "<86>1 2015-03-19T10:42:03.145881+01:00 hyp108 sshd[8245]: - sshd[8245]:: Accepted publickey for oneadmin from 10.141.2.11 port 55141 ssh2: DSA d0:a6:12:8f:48:50:c5:78:31:bd:5b:40:1b:78:fb:88",
+    "expected" : {
+        'method': 'publickey',
+        'pid': '8245',
+        'port': '55141',
+        'program': 'sshd',
+        'status': 'Accepted',
+        'syslog_abspri': '86',
+        'user': 'oneadmin',
+    }
+},
+{
+    "raw": "<86>1 2015-03-19T11:20:40.126248+01:00 gligar02 sshd[4513]: - sshd[4513]:: pam_unix(sshd:session): session closed for user vsc41450",
+    "expected": {  
+        'program': 'sshd',
+        'sshsession': 'closed',
+        'syslog_abspri': '86',
+        'user': 'vsc41450',
+    }
+},
+{
+    "raw": "<86>1 2015-03-19T12:37:06.245894+01:00 one01 sshd[20017]: - sshd[20017]:: pam_unix(sshd:session): session opened for user oneadmin by (uid=0)",
+    "expected": {  
+        'program': 'sshd',
+        'sshsession': 'opened',
+        'syslog_abspri': '86',
+        'user': 'oneadmin',
+    }
+},
 ]
