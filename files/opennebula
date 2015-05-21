@@ -1,0 +1,8 @@
+OPENNEBULA_ONED_MONITOR_VM .*?\[%{WORD:level}\]: VM %{INT:vmid} .*?: STATE\=%{WORD:vmstate} USEDCPU\=%{BASE16FLOAT:vmucpu} USEDMEMORY\=%{INT:vmmem} NETRX\=%{INT:vmnetrx} NETTX\=%{INT:vmnettx}
+OPENNEBULA_ONED_MONITOR_HYP .*?\[%{WORD:level}\]: .*? monitoring Host %{WORD:hypervisor} \(%{INT:hostid}\)
+OPENNEBULA_ONED_VM_STATUS \[VM %{INT:vmid}\].*?\[%{WORD:level}\]: .*? state is %{WORD:vmstate}
+OPENNEBULA_SCHED_STATUS .*?\[%{WORD:level}\]: .*? VM %{INT:vmid} .*? host %{INT:hostid} .*? datastore %{INT:datastoreid}
+OPENNEBULA_ONED_GENERIC_VM \[VM %{INT:vmid}\].*?\[%{WORD:level}\]: .*?
+
+
+OPENNEBULA_MSG (?:%{OPENNEBULA_ONED_MONITOR_VM}|%{OPENNEBULA_ONED_VM_STATUS}|%{OPENNEBULA_ONED_MONITOR_HYP}|%{OPENNEBULA_SCHED_STATUS}|%{OPENNEBULA_ONED_GENERIC_VM}|%{GREEDYDATA:syslog_message})
