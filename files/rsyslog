@@ -2,9 +2,9 @@ RSYSLOGCUSTOMHEADER (?:(?:<%{NONNEGINT:syslog_abspri}>(?:%{NONNEGINT:syslog_vers
 
 # new style, needs custom logstash config
 RSYSLOG_SSHD %{RSYSLOGCUSTOMHEADER} %{IPORHOST:syslog_hostname} (?<program>sshd)(?:\[%{POSINT:pid}\])?: %{SSH_MESSAGE}
-RSYSLOG_MSG (?:%{MODULECMD_MSG}|%{NFS_MSG}|%{CEPH_MSG}|%{GREEDYDATA:syslog_message})
+RSYSLOG_MSG (?:%{MODULECMD_MSG}|%{NFS_MSG}|%{CEPH_MSG}|%{KEYVALUE_MSG}|%{GREEDYDATA:syslog_message})
 RSYSLOG_CUSTOM %{RSYSLOGCUSTOMHEADER} %{IPORHOST:syslog_hostname} (?:%{PROG:program}(?:\[%{POSINT:pid}\])?: )?%{RSYSLOG_MSG}
 
 # old style
-RSYSLOGMESSAGE (?:%{SSH_MESSAGE}|%{MODULECMD_MSG}|%{NFS_MSG}|%{CEPH_MSG}|%{OPENNEBULA_MSG}|%{GREEDYDATA:syslog_message})
+RSYSLOGMESSAGE (?:%{SSH_MESSAGE}|%{MODULECMD_MSG}|%{NFS_MSG}|%{CEPH_MSG}|%{KEYVALUE_MSG}|%{GREEDYDATA:syslog_message})
 RSYSLOGCUSTOM %{RSYSLOGCUSTOMHEADER} %{IPORHOST:syslog_hostname} (?:%{PROG:program}(?:\[%{POSINT:pid}\])?: )?%{RSYSLOGMESSAGE}
