@@ -32,7 +32,7 @@ from distutils.core import setup
 import glob
 
 setup(name="logstash-patterns",
-      version="1.1.0",
+      version="1.1.1",
       description="Grok patterns for logstash",
       long_description="""Grok patterns for parsing log messages with logstash.
 
@@ -41,6 +41,7 @@ Can be debugged on https://grokdebug.herokuapp.com/ or via the runtest.py in tes
       license="LGPL",
       author="HPC UGent",
       author_email="hpc-admin@lists.ugent.be",
+      # keep MANIFEST.in in sync (EL6 packaging issue)
       data_files=[("/usr/share/grok", glob.glob("files/*")),
                   ("/usr/share/logstash/filters", glob.glob("logstash/filters/*")),
                   ],
