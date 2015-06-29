@@ -2,8 +2,8 @@ data = [
 {
     "raw" : "2015-06-08T11:27:43.319841+02:00 vulpix04 ncd[6581]: - ncd[6581]::  5 errors, 4 warnings executing configure",
     "expected" : {
-           "errors" : 5,
-           "warnings" : 4,
+           "ncderrors" : 5,
+           "ncdwarnings" : 4,
     }
 },
 {
