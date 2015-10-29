@@ -3,10 +3,6 @@
 #
 # All these should put the useful payload into the variable KEYVALUEDATA,
 # to ensure it will be parsed properly by the kv filter
-# - JUBE suite messages
 
 
-JUBE_MSG %{DATA} JUBE %{GREEDYDATA:KEYVALUEDATA}
-
-
-KEYVALUE_MSG (?:%{JUBE_MSG})
+KEYVALUE_MSG %{GREEDYDATA:KEYVALUEDATA}
