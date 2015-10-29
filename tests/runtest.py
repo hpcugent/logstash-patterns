@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # -*- coding: latin-1 -*-
 #
 # Copyright 2009-2014 Ghent University
@@ -38,15 +38,15 @@ from vsc.utils.generaloption import simple_option
 """
 Test the grok patterns for logstash usage.
 
-To test a new expression, add a new entry with 
+To test a new expression, add a new entry with
 { "raw": "actual raw message" }
-to the begin of the 00_first data file, and run with -F option 
+to the begin of the 00_first data file, and run with -F option
 (or to the zz_last data file and use -L option).
-The test will fail and dump the results as seen by logstash. 
-Then you can construct the expected output and create 
+The test will fail and dump the results as seen by logstash.
+Then you can construct the expected output and create
 the "expected" dictionary.
 
-The raw message is what is being sent to logstash 
+The raw message is what is being sent to logstash
 (and typically what kibana shows as message).
 
 @author: Stijn De Weirdt (Ghent University)
@@ -97,6 +97,7 @@ def process(stdout, expected_size):
     """Take in stdout, return list of dicts that are created via loading the json output"""
     ignore = re.compile(r'(:message=>)')
     output = []
+    warning = re.compile("warning:")
     for line in stdout.split("\n"):
         if not line.strip():
             continue
@@ -105,9 +106,11 @@ def process(stdout, expected_size):
         try:
             res = json.loads(line)
         except:
-            _log.error("Can't load line as json: %s." % line)
-            sys.exit(1)
-        output.append(res)
+            if not warning.search(line):
+                _log.error("Can't load line as json: %s." % line)
+                sys.exit(1)
+        else:
+            output.append(res)
 
     if len(output) != expected_size:
         _log.error("outputs size %s not expected size %s: (%s)" % (len(output), expected_size, output))
