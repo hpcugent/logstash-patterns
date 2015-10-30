@@ -9,8 +9,8 @@
 #     - IMB
 
 MODULE_NAME [-a-zA-Z0-9/.]+
-EXEC_HOST [-a-zA-Z0-9/+.]+
-JOB_INPUT [-a-zA-Z0-9/.]+
+EXEC_HOST [-a-zA-Z0-9/+.,]+
+JOB_INPUT [-a-zA-Z0-9/._]+
 
 STREAM_MSG stream_copy=%{NUMBER:stream_copy} stream_scale=%{NUMBER:stream_scale} stream_add=%{NUMBER:stream_add} stream_triad=%{NUMBER:stream_triad}
 WRF_MSG wrf_success=%{WORD:wrf_success}
