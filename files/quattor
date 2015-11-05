@@ -1,0 +1,4 @@
+QUATTOR_NCD_START .*?version %{DATA:ncdversion} started.*?
+QUATTOR_NCD_FINISH .*?%{INT:ncderrors:int} errors\, %{INT:ncdwarnings:int} warnings executing configure
+
+QUATTOR_MSG (?:%{QUATTOR_NCD_START}|%{QUATTOR_NCD_FINISH})

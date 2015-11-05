@@ -1,0 +1,15 @@
+data = [
+{
+    "raw" : "2015-06-08T11:27:43.319841+02:00 vulpix04 ncd[6581]: - ncd[6581]::  5 errors, 4 warnings executing configure",
+    "expected" : {
+           "ncderrors" : 5,
+           "ncdwarnings" : 4,
+    }
+},
+{
+    "raw" : "2015-06-08T11:27:04.525448+02:00 vulpix04 ncd[6581]: - ncd[6581]::  NCM-NCD version 15.4.0-rc13-SNAPSHOT started by root at: Mon Jun  8 11:27:04 2015",
+    "expected" : {
+           "ncdversion" : "15.4.0-rc13-SNAPSHOT",
+    }
+},
+]
