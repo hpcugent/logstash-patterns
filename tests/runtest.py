@@ -32,6 +32,7 @@ import pprint
 import re
 import shutil
 import sys
+from unittest.case import TestCase
 from vsc.utils.run import run_asyncloop
 from vsc.utils.generaloption import simple_option
 
@@ -129,6 +130,8 @@ def test(output, input, results):
             sys.exit(2)
 
         counter[0] += 1
+        t = TestCase('assertEqual')
+
         for k, v in res.items():
             counter[1] += 1
 
@@ -137,7 +140,9 @@ def test(output, input, results):
                 sys.exit(1)
 
             res_out = out[unicode(k)]
-            if not unicode(res_out) == unicode(v):
+            try:
+                t.assertEqual(res_out, v)
+            except AssertionError:
                 tmpl = "key %s value %s (type %s), expected %s (type %s)"
                 _log.error(tmpl % (k, res_out, type(res_out), v, type(v)))
                 _log.debug("Full out %s" % (pprint.pformat(out)))
@@ -177,4 +182,3 @@ if __name__ == '__main__':
     _log = go.log
 
     main(indices)
-
