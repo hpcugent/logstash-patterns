@@ -13,7 +13,7 @@ data = [
         "volumeused": 101000000000000,
         "volumeavail": 30931000000000,
         "volumetotal": 131000000000000,
-        'objdegraded': '12675482',
+        'objdegraded': 12675482,
         'objrecovhz': 6,
         'objrecovthr': 6157000,
         'objtotal': 110833141,
