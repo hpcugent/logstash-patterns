@@ -12,15 +12,15 @@ MODULE_NAME [-a-zA-Z0-9/.]+
 EXEC_HOST [-a-zA-Z0-9/+.,]+
 JOB_INPUT [-a-zA-Z0-9/._]+
 
-STREAM_MSG stream_copy=%{NUMBER:stream_copy} stream_scale=%{NUMBER:stream_scale} stream_add=%{NUMBER:stream_add} stream_triad=%{NUMBER:stream_triad}
+STREAM_MSG stream_copy=%{NUMBER:stream_copy:float} stream_scale=%{NUMBER:stream_scale:float} stream_add=%{NUMBER:stream_add:float} stream_triad=%{NUMBER:stream_triad:float}
 WRF_MSG wrf_success=%{WORD:wrf_success}
-IMB_MSG bytes=%{INT:bytes} iter=%{INT:iter} runtime=%{INT:runtime} t_min_us=%{INT:t_min_us} t_max_us=%{INT:t_max_us} t_avg_us=%{INT:t_avg_us} rate=%{INT:rate}
+IMB_MSG bytes=%{INT:bytes:int} iter=%{INT:iter:int} runtime=%{INT:runtime:int} t_min_us=%{INT:t_min_us:int} t_max_us=%{INT:t_max_us:int} t_avg_us=%{INT:t_avg_us:int} rate=%{INT:rate:int}
 
 JUBE_INFO jube_id=%{WORD:jube_id} jube_label=%{WORD:jube_label}
-JUBE_TIME_INFO time=%{TIMESTAMP_ISO8601:time} seconds=%{INT:seconds}
+JUBE_TIME_INFO time=%{TIMESTAMP_ISO8601:time} seconds=%{INT:seconds:int}
 JUBE_ENV_INFO user=%{WORD:user} host=%{WORD:host} module=%{MODULE_NAME:module} input=%{JOB_INPUT:input}
-JUBE_JOB_INFO pbs_job_id=%{WORD:pbs_job_id} pbs_nodes=%{INT:pbs_nodes} pbs_ppn=(%{INT:pbs_ppn})? exec_host=%{EXEC_HOST:exec_host}
-JUBE_TIMING_INFO cputime=%{INT:cputime} walltime=%{INT:walltime}
-JUBE_BENCHMARK_RESULTS compute_walltime=(%{INT:compute_walltime})? (%{STREAM_MSG}|%{WRF_MSG}|%{IMB_MSG})
+JUBE_JOB_INFO pbs_job_id=%{WORD:pbs_job_id} pbs_nodes=%{INT:pbs_nodes:int} pbs_ppn=(%{INT:pbs_ppn:int})? exec_host=%{EXEC_HOST:exec_host}
+JUBE_TIMING_INFO cputime=%{INT:cputime:int} walltime=%{INT:walltime:int}
+JUBE_BENCHMARK_RESULTS compute_walltime=(%{INT:compute_walltime:int})? (%{STREAM_MSG}|%{WRF_MSG}|%{IMB_MSG})
 
 JUBE_MSG %{DATA} JUBE %{JUBE_INFO} %{JUBE_TIME_INFO} %{JUBE_ENV_INFO} %{JUBE_JOB_INFO} %{JUBE_TIMING_INFO} %{JUBE_BENCHMARK_RESULTS}
