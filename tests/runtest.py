@@ -87,6 +87,7 @@ def prep_grok():
         pass
     shutil.copytree(os.path.join(os.path.dirname(os.getcwd()), 'files'), GROK_CONFIG_DIR)
 
+
 def get_data(directory='data', globpattern='*'):
     """Read the input data"""
     datafiles = glob.glob("%s/%s" % (directory, globpattern))
@@ -104,10 +105,12 @@ def get_data(directory='data', globpattern='*'):
             _log.debug('No data found in datafile %s' % fn)
     return input, results
 
+
 def process(stdout, expected_size):
     """Take in stdout, return list of dicts that are created via loading the json output"""
     ignore = re.compile(r'(:message=>)')
     output = []
+    lines = []
     warning = re.compile("warning:")
     for line in stdout.split("\n"):
         if not line.strip():
@@ -121,7 +124,7 @@ def process(stdout, expected_size):
                 _log.error("Can't load line as json: %s." % line)
                 sys.exit(1)
         else:
-            output.append(res)
+            output.append((res, line))
 
     if len(output) != expected_size:
         _log.error("outputs size %s not expected size %s: (%s)" % (len(output), expected_size, output))
@@ -134,10 +137,13 @@ def process(stdout, expected_size):
 def test(output, input, results):
     """Perform the tests"""
     counter = [0, 0]
-    for out, inp, res in zip(output, input, results):
+    for out_line, inp, res in zip(output, input, results):
         if res is None:
             _log.error("Input %s converted in out %s" % (inp, pprint.pformat(out)))
             sys.exit(2)
+
+        out = out_line[0]
+        line = out_line[1]
 
         counter[0] += 1
         t = TestCase('assertEqual')
@@ -155,7 +161,7 @@ def test(output, input, results):
             except AssertionError:
                 tmpl = "key %s value %s (type %s), expected %s (type %s)"
                 _log.error(tmpl % (k, res_out, type(res_out), v, type(v)))
-                _log.debug("Full out %s" % (pprint.pformat(out)))
+                _log.debug("Full out %s from line %s" % (pprint.pformat(out), line))
                 sys.exit(1)
 
     _log.info("Verified %s lines with %s subtests. All OK" % (counter[0], counter[1]))
