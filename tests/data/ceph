@@ -22,7 +22,7 @@ data = [
         'program': 'ceph-mon',
         'syslog_abspri': u'30',
         '@source_host': 'ceph002',
-        'active_clean': 1033,
+        'active_clean': '1033',
     }
 },
 
