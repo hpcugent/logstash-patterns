@@ -3,10 +3,7 @@
 #
 # All these should put the useful payload into the variable KEYVALUEDATA,
 # to ensure it will be parsed properly by the kv filter
-# - JUBE suite messages
 
-
-JUBE_MSG %{DATA} JUBE %{GREEDYDATA:KEYVALUEDATA}
-
-
-KEYVALUE_MSG (?:%{JUBE_MSG})
+# Not sure how whitespace in value is handled (also no backrefs allowed)
+KEY_EQ_VALUE_MSG (?:\s+(?:%{NOTSPACE}=['"]?%{NOTSPACE}['"]?))+\s*$
+KEYVALUE_MSG %{KEY_EQ_VALUE_MSG:KEY_EQ_VALUEDATA}
