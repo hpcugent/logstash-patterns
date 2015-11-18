@@ -46,5 +46,23 @@ data = [
             u'walltime': 280,
             u'wrf_success': u'SUCCESS',
         }
-    }
+    },
+    {
+        "raw": "<14>1 2015-10-27T19:32:37.664122+01:00 node711 jube[25037]: - jube[25037]::  JUBE jube_id=29794 jube_label=None time=2015-10-27T19:28:45 seconds=1445970525 user=vsc40075 host=node711 module=STREAM/5.10-intel-2015a input=100M-OpenMP pbs_job_id=29794 pbs_nodes=1 pbs_ppn= exec_host=node711.dugtrio.gent.vsc/0-11 cputime=2174 walltime=186 compute_walltime= wrf_success=true",
+        "expected": {
+            u'cputime': 2174,
+            u'exec_host': u'node711.dugtrio.gent.vsc/0-11',
+            u'input': u'100M-OpenMP',
+            u'jube_id': u'29794',
+            u'jube_label': u'None',
+            u'module': u'STREAM/5.10-intel-2015a',
+            u'pbs_job_id': u'29794',
+            u'pbs_nodes': 1,
+            u'seconds': 1445970525,
+            u'time': u'2015-10-27T19:28:45',
+            u'user': u'vsc40075',
+            u'walltime': 186,
+            u'wrf_success': True
+        },
+    },
 ]
