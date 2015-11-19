@@ -9,7 +9,7 @@ The cases here should NOT be matched by anything that we explicitely check for.
 """
 data = [
     {
-        "raw": "<42>May 25 00:00:00 betelgeuse zaphod[42]: yup, producing a pan galactic gargle blaster",
+        "raw": "<30>May 25 00:00:00 betelgeuse zaphod[30]: yup, producing a pan galactic gargle blaster",
         "expected": {
             "@message": "yup, producing a pan galactic gargle blaster"
         }
