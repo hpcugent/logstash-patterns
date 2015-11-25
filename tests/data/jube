@@ -28,7 +28,7 @@ data = [
         }
     },
     {
-        "raw": "<14>1 2015-10-30T16:18:07.980567+01:00 node706 jube[32460]: - jube[32460]::  JUBE jube_id=29833 jube_label=None time=2015-10-30T16:12:46 seconds=1446217966 user=vsc40075 host=node706 module=WRF/3.6.1-intel-2015a-dmpar input=conus_12_km pbs_job_id=29833 pbs_nodes=2 pbs_ppn= exec_host=node706.dugtrio.gent.vsc/0-11,node708.dugtrio.gent.vsc/0-11 cputime=2363 walltime=280 compute_walltime=252 wrf_success=True^",
+        "raw": "<14>1 2015-10-30T16:18:07.980567+01:00 node706 jube[32460]: - jube[32460]::  JUBE jube_id=29833 jube_label=None time=2015-10-30T16:12:46 seconds=1446217966 user=vsc40075 host=node706 module=WRF/3.6.1-intel-2015a-dmpar input=conus_12_km pbs_job_id=29833 pbs_nodes=2 pbs_ppn= exec_host=node706.dugtrio.gent.vsc/0-11,node708.dugtrio.gent.vsc/0-11 cputime=2363 walltime=280 compute_walltime=252 wrf_success=true",
         "expected": {
             u'compute_walltime': 252,
             u'cputime': 2363,
@@ -44,7 +44,7 @@ data = [
             u'time': u'2015-10-30T16:12:46',
             u'user': u'vsc40075',
             u'walltime': 280,
-            u'success': u'SUCCESS',
+            u'success': True,
         }
     },
     {
