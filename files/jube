@@ -13,7 +13,7 @@ EXEC_HOST [-a-zA-Z0-9/+.,]+
 JOB_INPUT [-a-zA-Z0-9/._]+
 
 STREAM_MSG stream_copy=%{NUMBER:stream_copy:float} stream_scale=%{NUMBER:stream_scale:float} stream_add=%{NUMBER:stream_add:float} stream_triad=%{NUMBER:stream_triad:float}
-WRF_MSG wrf_success=%{WORD:wrf_success}
+WRF_MSG wrf_success=%{WORD:success}
 IMB_MSG bytes=%{INT:bytes:int} iter=%{INT:iter:int} runtime=%{INT:runtime:int} t_min_us=%{INT:t_min_us:int} t_max_us=%{INT:t_max_us:int} t_avg_us=%{INT:t_avg_us:int} rate=%{INT:rate:int}
 
 JUBE_INFO jube_id=%{WORD:jube_id} jube_label=%{WORD:jube_label}
