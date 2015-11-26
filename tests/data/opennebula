@@ -15,7 +15,7 @@ data = [
     "raw": "2015-03-19T10:20:53.019214+01:00 one01 oned[16433]: [VM 149][Z0][LCM][I]: New VM state is RUNNING",
     "expected": {
         "level" : "I",
-        "vmid" : '149',
+        "vmid" : 149,
         "vmstate" : "RUNNING",
     }
 },
@@ -31,8 +31,8 @@ data = [
     "raw": "2015-03-19T10:20:50.038092+01:00 one01 mm_sched[16436]: [Z0][VM][I]: Dispatching VM 149 to host 32 and datastore 0",
     "expected": {
         "level" : "I",
-        "vmid" : '149',
-        "hostid" : '32',
+        "vmid" : 149,
+        "hostid" : 32,
         "datastoreid" : 0,
     }
 },
@@ -40,7 +40,7 @@ data = [
     "raw": "2015-03-19T10:37:40.619650+01:00 one01 oned[16433]: [VM 149][Z0][VMM][W]: Ignored: LOG I 149 Successfully execute transfer manager driver operation: tm_delete.",
     "expected": {
         "level" : "W",
-        "vmid" : '149',
+        "vmid" : 149,
     }
 },
 ]
