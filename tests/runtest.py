@@ -139,7 +139,7 @@ def test(output, input, results):
     counter = [0, 0]
     for out_line, inp, res in zip(output, input, results):
         if res is None:
-            _log.error("Input %s converted in out %s" % (inp, pprint.pformat(out)))
+            _log.error("Input %s converted in out %s" % (inp, pprint.pformat(output)))
             sys.exit(2)
 
         out = out_line[0]
@@ -152,7 +152,7 @@ def test(output, input, results):
             counter[1] += 1
 
             if not unicode(k) in out:
-                _log.error("key %s missing from output %s for inp %s" % (k, out, inp))
+                _log.error("key %s missing from output \n%s\n for inp \n%s" % (k, pprint.pformat(out), inp))
                 sys.exit(1)
 
             res_out = out[unicode(k)]
