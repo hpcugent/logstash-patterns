@@ -28,7 +28,7 @@ data = [
         }
     },
     {
-        "raw": "<14>1 2015-10-30T16:18:07.980567+01:00 node706 jube[32460]: - jube[32460]::  JUBE jube_id=29833 jube_label=None time=2015-10-30T16:12:46 seconds=1446217966 user=vsc40075 host=node706 module=WRF/3.6.1-intel-2015a-dmpar input=conus_12_km pbs_job_id=29833 pbs_nodes=2 pbs_ppn= exec_host=node706.dugtrio.gent.vsc/0-11,node708.dugtrio.gent.vsc/0-11 cputime=2363 walltime=280 compute_walltime=252 wrf_success=SUCCESS",
+        "raw": "<14>1 2015-10-30T16:18:07.980567+01:00 node706 jube[32460]: - jube[32460]::  JUBE jube_id=29833 jube_label=None time=2015-10-30T16:12:46 seconds=1446217966 user=vsc40075 host=node706 module=WRF/3.6.1-intel-2015a-dmpar input=conus_12_km pbs_job_id=29833 pbs_nodes=2 pbs_ppn= exec_host=node706.dugtrio.gent.vsc/0-11,node708.dugtrio.gent.vsc/0-11 cputime=2363 walltime=280 compute_walltime=252 wrf_success=true",
         "expected": {
             u'compute_walltime': 252,
             u'cputime': 2363,
@@ -44,7 +44,25 @@ data = [
             u'time': u'2015-10-30T16:12:46',
             u'user': u'vsc40075',
             u'walltime': 280,
-            u'wrf_success': u'SUCCESS',
+            u'success': True,
         }
-    }
+    },
+    {
+        "raw": "<14>1 2015-10-27T19:32:37.664122+01:00 node711 jube[25037]: - jube[25037]::  JUBE jube_id=29794 jube_label=None time=2015-10-27T19:28:45 seconds=1445970525 user=vsc40075 host=node711 module=STREAM/5.10-intel-2015a input=100M-OpenMP pbs_job_id=29794 pbs_nodes=1 pbs_ppn= exec_host=node711.dugtrio.gent.vsc/0-11 cputime=2174 walltime=186 compute_walltime= wrf_success=true",
+        "expected": {
+            u'cputime': 2174,
+            u'exec_host': u'node711.dugtrio.gent.vsc/0-11',
+            u'input': u'100M-OpenMP',
+            u'jube_id': u'29794',
+            u'jube_label': u'None',
+            u'module': u'STREAM/5.10-intel-2015a',
+            u'pbs_job_id': u'29794',
+            u'pbs_nodes': 1,
+            u'seconds': 1445970525,
+            u'time': u'2015-10-27T19:28:45',
+            u'user': u'vsc40075',
+            u'walltime': 186,
+            u'wrf_success': True
+        },
+    },
 ]
