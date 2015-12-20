@@ -1,0 +1,1 @@
+SNOOPY_MSG (?:- snoopy\[%{INT}\]::)?\s+\[uid:%{INT:uid:int} sid:%{INT:sid:int} tty:%{DATA:tty} cwd:%{UNIXPATH:cwd} filename:%{UNIXPATH:executable}\]: %{GREEDYDATA:command}
