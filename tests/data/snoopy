@@ -8,5 +8,59 @@ data = [
         "@message": "[uid:110 sid:8322 tty: cwd:/ filename:/bin/cut]: cut -d ; -f 4 ",
     }
 },
-
+{
+    "raw": "<86>1 2015-12-19T17:30:22.145124+01:00 gligar03 snoopy[27316]: - snoopy[27316]::  [uid:110 sid:9379 tty:(none) cwd:/ filename:/usr/lib64/nagios/plugins/hpc/check_ifutil.pl]: /usr/lib64/nagios/plugins/hpc/check_ifutil.pl -i em1.295 -w 90 -c 95 -p -b 10000m",
+    "expected" : {
+        "program": "snoopy",
+        "pid": "27316",
+        "uid": 110,
+        "sid": 9379,
+        "command": "/usr/lib64/nagios/plugins/hpc/check_ifutil.pl -i em1.295 -w 90 -c 95 -p -b 10000m",
+        "cwd": "/",
+        "executable": "/usr/lib64/nagios/plugins/hpc/check_ifutil.pl",
+        "tty": "(none)",
+        "@source_host": "gligar03",
+    }
+},
+{
+    "raw": "<86>1 2015-12-20T09:59:40.844711+01:00 gligar03 snoopy[46513]: - snoopy[46513]:: [uid:2540337 sid:19403 tty:ERROR(ttyname_r->EUNKNOWN) cwd:/vscmnt/gent_vulpix/_/user/home/gent/vsc403/vsc40337/UCS_LABELLED_NEW/20000_to_30000 filename:/usr/bin/qsub]: qsub -l walltime=72:00:00 job7_21293_30000_doit",
+    "expected" : {
+        "program": "snoopy",
+        "pid": "46513",
+        "cwd": "/vscmnt/gent_vulpix/_/user/home/gent/vsc403/vsc40337/UCS_LABELLED_NEW/20000_to_30000",
+        "uid": 2540337,
+        "sid": 19403,
+        "command": "qsub -l walltime=72:00:00 job7_21293_30000_doit",
+        "executable": "/usr/bin/qsub",
+        "tty": "ERROR(ttyname_r->EUNKNOWN)",
+        "@source_host": "gligar03",
+    }
+},
+{
+"raw": "<86>1 2015-12-20T09:59:36.133039+01:00 master13 snoopy[36344]: - snoopy[36344]:: [uid:0 sid:36288 tty: cwd:/ filename:/sbin/pidof]: pidof -c -o 36318 -o 36292 -o %PPID -x cdp-listend",
+    "expected" : {
+        "program": "snoopy",
+        "pid": "36344",
+        "cwd": "/",
+        "uid": 0,
+        "sid": 36288,
+        "command": "pidof -c -o 36318 -o 36292 -o %PPID -x cdp-listend",
+        "executable": "/sbin/pidof",
+        "@source_host": "master13",
+    }
+},
+{
+"raw": "<86>1 2015-12-08T16:59:54.996042+01:00 gligar01 snoopy[30093]: - snoopy[30093]:: [uid:2540003 sid:29974 tty:/dev/pts/7 cwd:/vscmnt/gent_vulpix/_/user/home/gent/vsc400/vsc40003 filename:/user/home/gent/vsc400/vsc40003/easybuild_easyinstalled/bin/easy_install]: easy_install -U --prefix /user/home/gent/vsc400/vsc40003/easybuild_easyinstalled https://github.com/hpcugent/easybuild-framework/archive/develop.tar.gz",
+    "expected" : {
+        "program": "snoopy",
+        "pid": "30093",
+        "cwd": "/vscmnt/gent_vulpix/_/user/home/gent/vsc400/vsc40003",
+        "uid": 2540003,
+        "sid": 29974,
+        "command": "easy_install -U --prefix /user/home/gent/vsc400/vsc40003/easybuild_easyinstalled https://github.com/hpcugent/easybuild-framework/archive/develop.tar.gz",
+        "executable": "/user/home/gent/vsc400/vsc40003/easybuild_easyinstalled/bin/easy_install",
+        "tty": "/dev/pts/7",
+        "@source_host": "gligar01",
+    }
+},
 ]
