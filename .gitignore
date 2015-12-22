@@ -16,6 +16,9 @@ quattor/build
 *.o
 *.old
 *.DS_Store
+# vim
+.*.swp
+.*.swo
 
 ## Python __init__.py files for distributed packages
 rpms/python-vsc-packages-*/vsc/__init__.py
