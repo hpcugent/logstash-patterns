@@ -1,0 +1,10 @@
+data = [
+{
+    "raw": "<86>1 2015-12-22T10:49:47.644749+01:00 node2131 su: - su::  pam_unix(su-l:session): session closed for user vsc40035",
+    "expected": {
+        'program': 'su',
+        '@message': '- su::  pam_unix(su-l:session): session closed for user vsc40035',
+        '@source_host': 'node2131',
+    }
+},
+]
