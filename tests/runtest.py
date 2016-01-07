@@ -76,6 +76,7 @@ LOGSTASH_CMD = [
     'logstash',
     'agent',
     '-p', os.path.dirname(os.getcwd()),  # filters in subdir logstash of this directory
+#    '--debug',
     '-f'
 ]
 
@@ -145,6 +146,10 @@ def test(output, input, results):
         out = out_line[0]
         line = out_line[1]
 
+        _log.debug("Input: %s" % inp)
+        _log.debug("Expected Results: %s" % res)
+        _log.debug("Output: %s" % out)
+
         counter[0] += 1
         t = TestCase('assertEqual')
 
@@ -172,6 +177,10 @@ def main(indices, cfg_file):
     prep_grok()
     input, results = get_data()
     if indices:
+        for indx in indices:
+            _log.debug("Test %d => input: %s" % (indx, input[indx]))
+            _log.debug("Test %d => results: %s" % (indx, results[indx]))
+
         input = [input[idx] for idx in indices]
         results = [results[idx] for idx in indices]
 
