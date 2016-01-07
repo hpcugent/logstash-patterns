@@ -67,4 +67,19 @@ data = [
         "@source_host": "gligar01",
     }
 },
+{
+"raw": "<86>1 2016-01-05T18:38:32.550186+01:00 master1 snoopy[12006]: [uid:2009 username:wpoelman sid:11944 tty:(none) cwd:/home/wpoelman filename:/usr/bin/tr]: tr [:lower:] [:upper:]",
+    "expected" : {
+        'program':'snoopy',
+        'command':'tr [:lower:] [:upper:]',
+        'cwd':'/home/wpoelman',
+        'executable':'/usr/bin/tr',
+        'pid':'12006',
+        'sid': 11944,
+        'tty':'(none)',
+        'uid': 2009,
+        'username':'wpoelman',
+        "@source_host": "master1",
+    }
+},
 ]
