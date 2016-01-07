@@ -1,11 +1,7 @@
-RSYSLOGCUSTOMHEADER (?:(?:<%{NONNEGINT:syslog_abspri}>(?:%{NONNEGINT:syslog_version} )?)?(?<syslog_timestamp>%{TIMESTAMP_ISO8601:}|%{SYSLOGTIMESTAMP}))
-
-# new style, needs custom logstash config
-RSYSLOG_SSHD %{RSYSLOGCUSTOMHEADER} %{IPORHOST:syslog_hostname} (?<program>sshd)(?:\[%{POSINT:pid}\])?: %{SSH_MSG}
-RSYSLOG_MSG (?:%{MODULECMD_MSG}|%{NFS_MSG}|%{CEPH_MSG}|%{OPENNEBULA_MSG}|%{KEYVALUE_MSG}|%{QUATTOR_MSG}|%{SNOOPY_MSG}|%{GREEDYDATA:syslog_message})
-RSYSLOG_CUSTOM %{RSYSLOGPREFIX}%{RSYSLOG_MSG}
-RSYSLOGPREFIX  %{RSYSLOGCUSTOMHEADER} %{IPORHOST:syslog_hostname} (?:%{PROG:program}(?:\[%{POSINT:pid}\])?: )?
-
-# old style
+# Add new named patterns here before the GREEDYDATA
 RSYSLOGMESSAGE (?:%{GREEDYDATA:syslog_message})
+
+# Do not modify when only adding new
+RSYSLOGCUSTOMHEADER (?:(?:<%{NONNEGINT:syslog_abspri}>(?:%{NONNEGINT:syslog_version} )?)?(?<syslog_timestamp>%{TIMESTAMP_ISO8601:}|%{SYSLOGTIMESTAMP}))
+RSYSLOGPREFIX  %{RSYSLOGCUSTOMHEADER} %{IPORHOST:syslog_hostname} (?:%{PROG:program}(?:\[%{POSINT:pid}\])?: )?
 RSYSLOGCUSTOM %{RSYSLOGPREFIX}%{RSYSLOGMESSAGE}

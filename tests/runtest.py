@@ -173,11 +173,15 @@ def main(indices, cfg_file):
     input, results = get_data()
     if indices:
         for indx in indices:
-            _log.debug("Test %d => input: %s" % (indx, input[indx]))
-            _log.debug("Test %d => results: %s" % (indx, results[indx]))
+            _log.debug("Test index %d => input: %s" % (indx, input[indx]))
+            _log.debug("Test index %d => results: %s" % (indx, results[indx]))
 
-        input = [input[idx] for idx in indices]
-        results = [results[idx] for idx in indices]
+        try:
+            input = [input[idx] for idx in indices]
+            results = [results[idx] for idx in indices]
+        except IndexError, e:
+            _log.error('Provided indices %s exceed avail data items %s' % (indices, len(input)))
+            sys.exit(1)
 
     ec, stdout = run_asyncloop(cmd=LOGSTASH_CMD+[cfg_file], input="\n".join(input + ['']))
 
