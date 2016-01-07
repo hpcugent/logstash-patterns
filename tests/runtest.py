@@ -53,23 +53,18 @@ The raw message is what is being sent to logstash
 @author: Stijn De Weirdt (Ghent University)
 """
 
-# version 1.2.2
-# set LOGSTASH_JAR=./logstash.jar
-# set PATH to find logstash
-# JAVA_OPTS=-Djava.io.tmpdir=/var/tmp PATH=~/logstash/:$PATH LOGSTASH_JAR=~/logstash/logstash.jar ./runtest.py
-#
-# version 2.0.0
+# version 2.0.0 (or later)
 # download zip release from https://download.elastic.co/logstash/logstash/logstash-2.0.0.zip
 # unpack in e.g. ~/logstash dir
 # run tests with
-# PATH=~/logstash/logstash-2.0.0/bin:$PATH ./runtest.py -V 2.0.0
+# PATH=~/logstash/logstash-2.0.0/bin:$PATH ./runtest.py
 
 
 _log = None
 
 GROK_CONFIG_DIR = '/tmp/logpatterns-groktest'
 
-DEFAULT_LOGSTASH_VERSION = '1.2.2'
+DEFAULT_LOGSTASH_VERSION = '2.0.0'
 
 # missing configfile value to -f
 LOGSTASH_CMD = [
@@ -137,14 +132,28 @@ def process(stdout, expected_size):
 
 def test(output, input, results):
     """Perform the tests"""
+    # zip(output, input, results), but need to check if output is in same order as input/results
+    sorted_zip = []
+    for idx, out_line in enumerate(output):
+        out = out_line[0]
+        line = out_line[1]
+        msg = out.get('message', None)
+        if msg is None:
+            _log.error("message field missing from out idx %s: %s" % (idx, out))
+            sys.exit(1)
+        if msg in input:
+            inp_idx = input.index(msg)
+            sorted_zip.append((out, line, input.pop(inp_idx), results.pop(inp_idx)))
+        else:
+            _log.error("output message field missing from input: msg %s" % (msg))
+            _log.debug("output message field missing from input: msg %s input %s" % (msg, input))
+            sys.exit(1)
+
     counter = [0, 0]
-    for out_line, inp, res in zip(output, input, results):
+    for out, line, inp, res in sorted_zip:
         if res is None:
             _log.error("Input %s converted in out %s" % (inp, pprint.pformat(output)))
             sys.exit(2)
-
-        out = out_line[0]
-        line = out_line[1]
 
         _log.debug("Input: %s" % inp)
         _log.debug("Expected Results: %s" % res)
@@ -178,11 +187,15 @@ def main(indices, cfg_file):
     input, results = get_data()
     if indices:
         for indx in indices:
-            _log.debug("Test %d => input: %s" % (indx, input[indx]))
-            _log.debug("Test %d => results: %s" % (indx, results[indx]))
+            _log.debug("Test index %d => input: %s" % (indx, input[indx]))
+            _log.debug("Test index %d => results: %s" % (indx, results[indx]))
 
-        input = [input[idx] for idx in indices]
-        results = [results[idx] for idx in indices]
+        try:
+            input = [input[idx] for idx in indices]
+            results = [results[idx] for idx in indices]
+        except IndexError, e:
+            _log.error('Provided indices %s exceed avail data items %s' % (indices, len(input)))
+            sys.exit(1)
 
     ec, stdout = run_asyncloop(cmd=LOGSTASH_CMD+[cfg_file], input="\n".join(input + ['']))
 
