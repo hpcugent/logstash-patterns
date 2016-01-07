@@ -132,14 +132,28 @@ def process(stdout, expected_size):
 
 def test(output, input, results):
     """Perform the tests"""
+    # zip(output, input, results), but need to check if output is in same order as input/results
+    sorted_zip = []
+    for idx, out_line in enumerate(output):
+        out = out_line[0]
+        line = out_line[1]
+        msg = out.get('message', None)
+        if msg is None:
+            _log.error("message field missing from out idx %s: %s" % (idx, out))
+            sys.exit(1)
+        if msg in input:
+            inp_idx = input.index(msg)
+            sorted_zip.append((out, line, input.pop(inp_idx), results.pop(inp_idx)))
+        else:
+            _log.error("output message field missing from input: msg %s" % (msg))
+            _log.debug("output message field missing from input: msg %s input %s" % (msg, input))
+            sys.exit(1)
+
     counter = [0, 0]
-    for out_line, inp, res in zip(output, input, results):
+    for out, line, inp, res in sorted_zip:
         if res is None:
             _log.error("Input %s converted in out %s" % (inp, pprint.pformat(output)))
             sys.exit(2)
-
-        out = out_line[0]
-        line = out_line[1]
 
         _log.debug("Input: %s" % inp)
         _log.debug("Expected Results: %s" % res)
