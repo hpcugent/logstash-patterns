@@ -53,23 +53,18 @@ The raw message is what is being sent to logstash
 @author: Stijn De Weirdt (Ghent University)
 """
 
-# version 1.2.2
-# set LOGSTASH_JAR=./logstash.jar
-# set PATH to find logstash
-# JAVA_OPTS=-Djava.io.tmpdir=/var/tmp PATH=~/logstash/:$PATH LOGSTASH_JAR=~/logstash/logstash.jar ./runtest.py
-#
-# version 2.0.0
+# version 2.0.0 (or later)
 # download zip release from https://download.elastic.co/logstash/logstash/logstash-2.0.0.zip
 # unpack in e.g. ~/logstash dir
 # run tests with
-# PATH=~/logstash/logstash-2.0.0/bin:$PATH ./runtest.py -V 2.0.0
+# PATH=~/logstash/logstash-2.0.0/bin:$PATH ./runtest.py
 
 
 _log = None
 
 GROK_CONFIG_DIR = '/tmp/logpatterns-groktest'
 
-DEFAULT_LOGSTASH_VERSION = '1.2.2'
+DEFAULT_LOGSTASH_VERSION = '2.0.0'
 
 # missing configfile value to -f
 LOGSTASH_CMD = [
