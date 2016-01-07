@@ -82,4 +82,18 @@ data = [
         "@source_host": "master1",
     }
 },
+{
+    "raw": "<86>1 2016-01-07T16:08:52.407416+01:00 gligar03 snoopy[43645]: [uid:2541677 sid:39946 tty:(none) cwd:/vscmnt/gent_vulpix/_/user/home/gent/vsc416/vsc41677/project/AAN/HF_6_31++Gdp/NBO filename:/bin/cut]: cut -d. -f2",
+    "expected" : {
+        'program':'snoopy',
+        'command':'cut -d. -f2',
+        'cwd':'/vscmnt/gent_vulpix/_/user/home/gent/vsc416/vsc41677/project/AAN/HF_6_31++Gdp/NBO',
+        'executable':'/bin/cut',
+        'pid':'43645',
+        'sid': 39946,
+        'tty':'(none)',
+        'uid': 2541677,
+        "@source_host": "gligar03",
+    }
+},
 ]
