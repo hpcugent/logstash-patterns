@@ -70,7 +70,6 @@ data = [
         "expected" : {
             u'cputime': 18598,
             u'exec_host': u'node2422.golett.gent.vsc/0-23',
-            u'host': [u'localhost.localdomain', u'node2422'],
             u'input': u'1B-OpenMP',
             u'jube_id': u'170028',
             u'jube_label': u'golett-tier2-2015q4',
