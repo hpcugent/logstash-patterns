@@ -1,9 +1,1 @@
-#MODULE_NAME_AND_OR_VERSION (?:%{DATA:module_name}@%{GREEDYDATA:module_version}|%{GREEDYDATA:module_name})
-#MODULECMD_MSG (?:- modulecmd::  )?U%{DATA:user} H%{DATA:host} VC%{DATA:cluster} VAL%{DATA:architecture} ID%{DATA:jobid} %{DATA:modulecmd_shell}_%{DATA:modulecmd_cmd}_%{MODULE_NAME_AND_OR_VERSION}
-#SNOOPY_MSG (?:- snoopy\[%{INT}\]::\s+)?\[uid:%{INT:uid:int}\s+(username:%{USERNAME:username}\s+)?sid:%{INT:sid:int}\s+tty:%{DATA:tty}\s+cwd:%{DATA:cwd}\s+filename:%{DATA:executable}\]:\s+%{GREEDYDATA:command}
-
-#lmod: - lmod:: user=vsc40307, cluster=golett, arch=haswell, module=PSI/4.0b6-20160201-intel-2016a-mt-Python-2.7.11, fn=/apps/gent/CO7/haswell-ib/modules/all/PSI/4.0b6-20160201-intel-2016a-mt-Python-2.7.11, jobid=369145.master19.golett.gent.vsc
-
 LMOD_MSG (?:- lmod::)\s*user=%{USERNAME:username}, cluster=%{DATA:cluster}, arch=%{DATA:architecture}, module=%{DATA:module_name}/%{DATA:module_version}, fn=%{DATA:module_path}, jobid=%{DATA:jobid}$
-
-
