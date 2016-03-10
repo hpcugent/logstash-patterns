@@ -1,1 +1,1 @@
-LMOD_MSG (?:- lmod::)\s*user=%{USERNAME:username}, cluster=%{DATA:cluster}, arch=%{DATA:architecture}, module=%{DATA:module_name}/%{DATA:module_version}, fn=%{DATA:module_path}, jobid=%{DATA:jobid}$
+LMOD_MSG (?:- lmod::)\s*user=%{USERNAME_PAT}, cluster=%{DATA:cluster}, arch=%{DATA:architecture}, module=%{DATA:module_name}/%{DATA:module_version}, fn=%{DATA:module_path}, jobid=%{DATA:jobid}$
