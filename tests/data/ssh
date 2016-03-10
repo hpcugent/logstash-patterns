@@ -7,7 +7,7 @@ data = [
         'program': 'sshd',
         'sshsession': 'opened',
         'syslog_abspri': '86',
-        'user': 'vsc40000',
+        'username': 'vsc40000',
     }
 },
 {
@@ -16,7 +16,7 @@ data = [
         'program': 'sshd',
         'sshsession': 'closed',
         'syslog_abspri': '86',
-        'user': 'vsc40000',
+        'username': 'vsc40000',
     }
 },
 
@@ -29,7 +29,7 @@ data = [
         'program': 'sshd',
         'status': 'Accepted',
         'syslog_abspri': '86',
-        'user': 'vsc40000',
+        'username': 'vsc40000',
     }
 },
 
@@ -103,7 +103,7 @@ data = [
         'program': 'sshd',
         'status': 'Accepted',
         'syslog_abspri': '86',
-        'user': 'oneadmin',
+        'username': 'oneadmin',
     }
 },
 {
@@ -112,7 +112,7 @@ data = [
         'program': 'sshd',
         'sshsession': 'closed',
         'syslog_abspri': '86',
-        'user': 'vsc41450',
+        'username': 'vsc41450',
     }
 },
 {
@@ -121,7 +121,7 @@ data = [
         'program': 'sshd',
         'sshsession': 'opened',
         'syslog_abspri': '86',
-        'user': 'oneadmin',
+        'username': 'oneadmin',
     }
 },
 ]

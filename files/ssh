@@ -3,15 +3,15 @@ SSH_STATUS (?:Accepted|Failed)
 SSH_INVALID_USER Invalid user
 
 SSH_MESSAGE_CONNECTION %{SSH_STATUS:status}
-SSH_MESSAGE_INVALID %{SSH_INVALID_USER:status} %{WORD:user} from %{IP}
+SSH_MESSAGE_INVALID %{SSH_INVALID_USER:status} %{USERNAME_PAT} from %{IP}
 
 #newstyle
 SSH_SUBSYSTEM .*?subsystem request for (?<subsystem>.*)
 SSH_DISCONNECT .*?Received disconnect from %{IPORHOST:ip}: %{NONNEGINT}: (?<reason>disconnected by user)$
-SSH_VALID_INVALID .*?(?<status>Accepted|Failed|Invalid user)(?: %{WORD:method} for)? %{WORD:user} from %{IPORHOST:ip}(?: port %{NONNEGINT:port})?
-SSH_INPUT_USERAUTH .*?input_userauth_request: (?<inputuserauth>invalid user %{WORD})
+SSH_VALID_INVALID .*?(?<status>Accepted|Failed|Invalid user)(?: %{WORD:method} for)? %{USERNAME_PAT} from %{IPORHOST:ip}(?: port %{NONNEGINT:port})?
+SSH_INPUT_USERAUTH .*?input_userauth_request: (?<inputuserauth>invalid user %{USERNAME_PAT})
 SSH_AUTH_REFUSED .*?Authentication refused: bad ownership or modes for file %{PATH:ownerpath}
 
-SSH_PAM_SESSION .*?pam_unix\(sshd:session\): session %{WORD:sshsession} for user %{WORD:user}
+SSH_PAM_SESSION .*?pam_unix\(sshd:session\): session %{WORD:sshsession} for user %{USERNAME_PAT}
 
 SSH_MSG (?:%{SSH_VALID_INVALID}|%{SSH_PAM_SESSION}|%{SSH_DISCONNECT}|%{SSH_SUBSYSTEM}|%{SSH_INPUT_USERAUTH}|%{SSH_AUTH_REFUSED})
