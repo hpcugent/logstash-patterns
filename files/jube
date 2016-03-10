@@ -19,7 +19,7 @@ IMB_MSG bytes=%{INT:bytes:int} iter=%{INT:iter:int} runtime=%{INT:runtime:int} t
 
 JUBE_INFO jube_id=%{REALWORD:jube_id} jube_label=%{REALWORD:jube_label}
 JUBE_TIME_INFO time=%{TIMESTAMP_ISO8601:time} seconds=%{INT:seconds:int}
-JUBE_ENV_INFO user=%{REALWORD:user} host=%{REALWORD:host} module=%{MODULE_NAME:module} input=%{JOB_INPUT:input}
+JUBE_ENV_INFO user=%{USERNAME_PAT} host=%{REALWORD:host} module=%{MODULE_NAME:module} input=%{JOB_INPUT:input}
 JUBE_JOB_INFO pbs_job_id=%{REALWORD:pbs_job_id} pbs_nodes=%{EXEC_HOST:pbs_nodes} pbs_ppn=(%{INT:pbs_ppn:int})? exec_host=%{EXEC_HOST:exec_host}
 JUBE_TIMING_INFO cputime=%{INT:cputime:int} walltime=%{INT:walltime:int}
 JUBE_BENCHMARK_RESULTS compute_walltime=(%{INT:compute_walltime:int})? (%{STREAM_MSG}|%{WRF_MSG}|%{IMB_MSG})
