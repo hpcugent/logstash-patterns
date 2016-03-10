@@ -1,0 +1,29 @@
+data = [
+{
+    "raw" : "<13>1 2016-02-18T14:52:49.399290+01:00 node2407 lmod: - lmod:: user=vsc40307, cluster=golett, arch=haswell, module=PSI/4.0b6-20160201-intel-2016a-mt-Python-2.7.11, fn=/apps/gent/CO7/haswell-ib/modules/all/PSI/4.0b6-20160201-intel-2016a-mt-Python-2.7.11, jobid=369145.master19.golett.gent.vsc",
+    "expected": {
+        "program": "lmod",
+        "username": "vsc40307",
+        "cluster": "golett",
+        "architecture": "haswell",
+        "jobid": "369145.master19.golett.gent.vsc",
+        "module_name": "PSI",
+        "module_version": "4.0b6-20160201-intel-2016a-mt-Python-2.7.11",
+        "module_path": "/apps/gent/CO7/haswell-ib/modules/all/PSI/4.0b6-20160201-intel-2016a-mt-Python-2.7.11",
+        "@source_host": "node2407",
+    }
+},
+{
+    "raw": "<13>1 2016-02-18T14:53:10.225111+01:00 node2407 lmod: - lmod:: user=vsc40307, cluster=golett, arch=haswell, module=cluster/golett, fn=/etc/modulefiles/vsc/cluster/golett, jobid=",
+    "expected": {
+        "program": "lmod",
+        "username": "vsc40307",
+        "cluster": "golett",
+        "architecture": "haswell",
+        "module_name": "cluster",
+        "module_version": "golett",
+        "module_path": "/etc/modulefiles/vsc/cluster/golett",
+        "@source_host": "node2407",
+    }
+},
+]
