@@ -1,0 +1,3 @@
+SHOREWALL_ICMP .*?\Shorewall\:%{WORD:fwrule}\:%{WORD:fwtarget}\:IN\=%{WORD:fwin} OUT\=%{WORD:fwout} SRC\=%{IPORHOST:fwsrc} DST\=%{IPORHOST:fwdst} .*? PROTO\=%{WORD:fwproto} .*?
+
+SHOREWALL_MSG (?:%{SHOREWALL_ICMP})

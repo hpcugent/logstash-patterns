@@ -1,0 +1,14 @@
+data = [
+{
+    "raw" : "2016-04-07T09:27:26.729986+02:00 gastly kernel: - kernel:: Shorewall:ipmi2ext:REJECT:IN=em4 OUT=em3 SRC=10.148.253.91 DST=7.32.208.92 LEN=28 TOS=0x00 PREC=0x00 TTL=63 ID=36216 PROTO=ICMP TYPE=8 CODE=0 ID=0 SEQ=1421",
+    "expected" : {
+           "fwrule" : "ipmi2ext",
+           "fwtarget" : "REJECT",
+           "fwin" : "em4",
+           "fwout" : "em3",
+           "fwsrc" : "10.148.253.91",
+           "fwdst" : "7.32.208.92",
+           "fwproto" : "ICMP",
+    }
+},
+]
