@@ -21,8 +21,22 @@ data = [
            "fwsrc" : "10.148.6.20",
            "fwdst" : "10.141.10.249",
            "fwproto" : "UDP",
-           "fwspt" : 57002,
-           "fwdpt" : 53,
+           u"fwspt" : u"57002",
+           u"fwdpt" : u"53",
+    }
+},
+{
+    "raw" : "2016-03-29T16:10:49.386951+02:00 gligar03 kernel: - kernel:: Shorewall:ext2fw:REJECT:IN=em3 OUT= MAC=bc:30:5b:f7:84:bc:00:15:c7:8b:f8:00:08:00 SRC=78.22.205.170 DST=157.193.16.10 LEN=52 TOS=0x00 PREC=0x00 TTL=117 ID=7564 DF PROTO=TCP SPT=60048 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0",
+    "expected" : {
+           "fwrule" : "ext2fw",
+           "fwtarget" : "REJECT",
+           "fwin" : "em3",
+           "fwsrc" : "78.22.205.170",
+           "fwdst" : "157.193.16.10",
+           "fwmac" : "bc:30:5b:f7:84:bc:00:15:c7:8b:f8:00:08:00",
+           "fwproto" : "TCP",
+           "fwspt" : 60048,
+           "fwdpt" : 22,
     }
 },
 ]
