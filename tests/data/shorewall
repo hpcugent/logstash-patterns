@@ -11,4 +11,18 @@ data = [
            "fwproto" : "ICMP",
     }
 },
+{
+    "raw" : "2016-03-31T23:45:27.615225+02:00 gastly kernel: - kernel:: Shorewall:ipmi2int:REJECT:IN=em4 OUT=em1 SRC=10.148.6.20 DST=10.141.10.249 LEN=57 TOS=0x00 PREC=0x00 TTL=63 ID=62392 PROTO=UDP SPT=57002 DPT=53 LEN=37",
+    "expected" : {
+           "fwrule" : "ipmi2int",
+           "fwtarget" : "REJECT",
+           "fwin" : "em4",
+           "fwout" : "em1",
+           "fwsrc" : "10.148.6.20",
+           "fwdst" : "10.141.10.249",
+           "fwproto" : "UDP",
+           "fwspt" : 57002,
+           "fwdpt" : 53,
+    }
+},
 ]
