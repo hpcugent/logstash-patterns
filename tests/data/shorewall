@@ -1,0 +1,42 @@
+data = [
+{
+    "raw" : "2016-04-07T09:27:26.729986+02:00 gastly kernel: - kernel:: Shorewall:ipmi2ext:REJECT:IN=em4 OUT=em3 SRC=10.0.0.2 DST=10.0.0.1 LEN=28 TOS=0x00 PREC=0x00 TTL=63 ID=36216 PROTO=ICMP TYPE=8 CODE=0 ID=0 SEQ=1421",
+    "expected" : {
+           "fwrule" : "ipmi2ext",
+           "fwtarget" : "REJECT",
+           "fwin" : "em4",
+           "fwout" : "em3",
+           "fwsrc" : "10.0.0.2",
+           "fwdst" : "10.0.0.1",
+           "fwproto" : "ICMP",
+    }
+},
+{
+    "raw" : "2016-03-31T23:45:27.615225+02:00 gastly kernel: - kernel:: Shorewall:ipmi2int:REJECT:IN=em4 OUT=em1 SRC=10.0.0.2 DST=10.0.0.1 LEN=57 TOS=0x00 PREC=0x00 TTL=63 ID=62392 PROTO=UDP SPT=57002 DPT=53 LEN=37",
+    "expected" : {
+           "fwrule" : "ipmi2int",
+           "fwtarget" : "REJECT",
+           "fwin" : "em4",
+           "fwout" : "em1",
+           "fwsrc" : "10.0.0.2",
+           "fwdst" : "10.0.0.1",
+           "fwproto" : "UDP",
+           u"fwspt" : u"57002",
+           u"fwdpt" : u"53",
+    }
+},
+{
+    "raw" : "2016-03-29T16:10:49.386951+02:00 gligar03 kernel: - kernel:: Shorewall:ext2fw:REJECT:IN=em3 OUT= MAC=aa:aa:bb:ff:88:bc:bc:15:80:8b:f8:f8:80:00 SRC=78.0.0.1 DST=150.0.0.1 LEN=52 TOS=0x00 PREC=0x00 TTL=117 ID=7564 DF PROTO=TCP SPT=60048 DPT=22 WINDOW=65535 RES=0x00 SYN URGP=0",
+    "expected" : {
+           "fwrule" : "ext2fw",
+           "fwtarget" : "REJECT",
+           "fwin" : "em3",
+           "fwsrc" : "78.0.0.1",
+           "fwdst" : "150.0.0.1",
+           "fwmac" : "aa:aa:bb:ff:88:bc:bc:15:80:8b:f8:f8:80:00",
+           "fwproto" : "TCP",
+           "fwspt" : 60048,
+           "fwdpt" : 22,
+    }
+},
+]
