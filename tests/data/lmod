@@ -17,7 +17,7 @@ data = [
     "raw": "<13>1 2016-02-18T14:53:10.225111+01:00 node2407 lmod: - lmod:: user=vsc40307, cluster=golett, arch=haswell, module=cluster/golett, fn=/etc/modulefiles/vsc/cluster/golett, jobid=",
     "expected": {
         "program": "lmod",
-        "username": "vsc40307",
+        "username": "vsc40308",
         "cluster": "golett",
         "architecture": "haswell",
         "module_name": "cluster",

@@ -12,4 +12,4 @@ install:
     - tar -xzf logstash-${LOGSTASH_VERSION}.tar.gz
     - export PATH=$HOME/logstash-${LOGSTASH_VERSION}/bin:$PATH
 script:
-    - cd $TRAVIS_BUILD_DIR/tests && python runtest.py -d
+    - cd $TRAVIS_BUILD_DIR/tests && python runtest.py
