@@ -26,4 +26,28 @@ data = [
     }
 },
 
+{
+    "raw":"<33>Apr 12 20:57:56 mds01 ceph-mon: 2016-04-12 20:57:04.437911 mon.0 [INF] pgmap v2758229: 4160 pgs: 2 active+remapped+backfilling, 2 active+recovering+degraded, 101 active+remapped+wait_backfill, 1503 active+recovery_wait+degraded, 4 active+clean+scrubbing+deep, 2548 active+clean; 171 TB data, 242 TB used, 631 TB / 874 TB avail; 1529 B/s rd, 202 MB/s wr, 723 op/s; 865075/1400635626 objects degraded (0.062%); 81400/1400635626 objects misplaced (0.006%); 46084 kB/s, 20 objects/s recovering",
+    "expected": {
+        "actread": 1529,
+        "actwrite": 202000000,
+        "actops": 723,
+        "objdegraded": 865075,
+        "objtotal": 1400635626,
+        "objmisplaced": 81400,
+        "objrecovthr": 46084000,
+        "objrecovhz": 20,
+        "volumedata": 171000000000000,
+        "volumeused": 242000000000000,
+        "volumeavail": 631000000000000,
+        "volumetotal": 874000000000000,
+        'pgmapv': '2758229',
+        'pgs': 4160,
+        'program': 'ceph-mon',
+        'syslog_abspri': u'33',
+        '@source_host': 'mds01',
+        'active_clean': u'2548',
+    }
+},
+
 ]

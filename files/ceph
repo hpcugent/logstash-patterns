@@ -9,9 +9,10 @@ CEPH_PGMAP_DETAIL (?:%{CEPH_PGMAP_DETAIL_PAT}(?:, %{CEPH_PGMAP_DETAIL_PAT})*)
 CEPH_PGMAP_VOLUME %{CEPH_BYTES:volumedata} data, %{CEPH_BYTES:volumeused} used, %{CEPH_BYTES:volumeavail} / %{CEPH_BYTES:volumetotal} avail
 CEPH_PGMAP_ACT (%{CEPH_BYTES:actread}/s rd, )?(%{CEPH_BYTES:actwrite}/s wr, )?%{NONNEGINT:actops:int} op/s
 CEPH_PGMAP_OBJ_DEGRADED %{NONNEGINT:objdegraded:int}/%{NONNEGINT:objtotal:int} objects degraded [^;]*
+CEPH_PGMAP_OBJ_MISPLACED %{NONNEGINT:objmisplaced:int}/%{NONNEGINT:objtotal:int} objects misplaced [^;]*
 CEPH_PGMAP_OBJ_RECOV %{CEPH_BYTES:objrecovthr}/s, %{NONNEGINT:objrecovhz:int} objects/s recovering
 
-CEPH_PGMAP .*? pgmap v(?<pgmapv>[0-9]+): %{NONNEGINT:pgs:int} pgs: (?:%{CEPH_PGMAP_DETAIL})(?:; %{CEPH_PGMAP_VOLUME})?(?:; %{CEPH_PGMAP_ACT})?(?:; %{CEPH_PGMAP_OBJ_DEGRADED})?(?:; %{CEPH_PGMAP_OBJ_RECOV})?$
+CEPH_PGMAP .*? pgmap v(?<pgmapv>[0-9]+): %{NONNEGINT:pgs:int} pgs: (?:%{CEPH_PGMAP_DETAIL})(?:; %{CEPH_PGMAP_VOLUME})?(?:; %{CEPH_PGMAP_ACT})?(?:; %{CEPH_PGMAP_OBJ_DEGRADED})?(?:; %{CEPH_PGMAP_OBJ_MISPLACED})?(?:; %{CEPH_PGMAP_OBJ_RECOV})?$
 
 # NONNEGINT to support osd.0
 CEPH_SLOW_REQUEST_SECONDS (?<slowrequestseconds>%{NONNEGINT})(?:\.%{NONNEGINT})?

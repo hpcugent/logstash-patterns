@@ -207,7 +207,7 @@ if __name__ == '__main__':
         "last": ("Only test last data entry", None, "store_true", False, 'L'),
         "first": ("Only test first data entry", None, "store_true", False, 'F'),
         "entries": ("Indices of data entries to test", "strlist", "store", None, 'E'),
-        "logstash-version": ("Logstash verison to test with", None, "store", DEFAULT_LOGSTASH_VERSION, 'V'),
+        "logstash-version": ("Logstash version to test with", None, "store", DEFAULT_LOGSTASH_VERSION, 'V'),
     }
     go = simple_option(opts)
     indices = None
@@ -225,7 +225,7 @@ if __name__ == '__main__':
     cfg_file = os.path.join(os.path.dirname(os.getcwd()), 'tests', cfg_name)
 
     if not os.path.isfile(cfg_file):
-        _log.error("Could not find logstash version %s cofnigfile %s" % (go.options.logstash_version, cfg_file))
+        _log.error("Could not find logstash version %s configfile %s" % (go.options.logstash_version, cfg_file))
         sys.exit(1)
 
     main(indices, cfg_file)
