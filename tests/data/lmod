@@ -1,19 +1,18 @@
 data = [
 {
-    "raw": "<13>1 2016-06-07T17:50:27.866534+02:00 node2159 lmod: - lmod:: username=vsc40307, cluster=delcatty, arch=sandybridge, jobid=434.master16.delcatty.gent.vsc, cmd=load, args=-GCC",
+    "raw": "<13>1 2016-06-07T17:50:27.866534+02:00 node2159 lmod: - lmod:: username=vsc40307, cluster=delcatty, jobid=434.master16.delcatty.gent.vsc, cmd=load, args=-GCC",
     "expected": {
         "@source_host": "node2159",
         "program": "lmod",
         "username": "vsc40307",
         "cluster": "delcatty",
         "jobid": "434.master16.delcatty.gent.vsc",
-        "architecture": "sandybridge",
         "command": "load",
         "arguments": "-GCC",
     }
 },
 {
-    "raw": "<13>1 2016-06-07T17:50:22.658452+02:00 node2159 lmod: - lmod:: username=vsc40307, cluster=delcatty, arch=sandybridge, jobid=434.master16.delcatty.gent.vsc, userload=yes, module=intel/2016a, fn=/apps/gent/SL6/sandybridge/modules/all/intel/2016a",
+    "raw": "<13>1 2016-06-07T17:50:22.658452+02:00 node2159 lmod: - lmod:: username=vsc40307, cluster=delcatty, jobid=434.master16.delcatty.gent.vsc, userload=yes, module=intel/2016a, fn=/apps/gent/SL6/sandybridge/modules/all/intel/2016a",
     "expected": {
         "program": "lmod",
         "@source_host": "node2159",
@@ -21,7 +20,6 @@ data = [
         "username": "vsc40307",
         "cluster": "delcatty",
         "jobid": "434.master16.delcatty.gent.vsc",
-        "architecture": "sandybridge",
         "userload": "yes",
         "module_name": "intel",
         "module_version": "2016a",
@@ -29,14 +27,13 @@ data = [
     }
 },
 {
-    "raw": "<13>1 2016-06-07T17:50:22.495571+02:00 node2159 lmod: - lmod:: username=vsc40307, cluster=delcatty, arch=sandybridge, jobid=434.master16.delcatty.gent.vsc, userload=no, module=binutils/2.25-GCCcore-4.9.3, fn=/apps/gent/SL6/sandybridge/modules/all/binutils/2.25-GCCcore-4.9.3",
+    "raw": "<13>1 2016-06-07T17:50:22.495571+02:00 node2159 lmod: - lmod:: username=vsc40307, cluster=delcatty, jobid=434.master16.delcatty.gent.vsc, userload=no, module=binutils/2.25-GCCcore-4.9.3, fn=/apps/gent/SL6/sandybridge/modules/all/binutils/2.25-GCCcore-4.9.3",
     "expected": {
         "@source_host": "node2159",
         "program": "lmod",
         "username": "vsc40307",
         "cluster": "delcatty",
         "jobid": "434.master16.delcatty.gent.vsc",
-        "architecture": "sandybridge",
         "userload": "no",
         "module_name": "binutils",
         "module_version": "2.25-GCCcore-4.9.3",
@@ -44,31 +41,29 @@ data = [
     }
 },
 {
-    "raw": "<13>1 2016-06-07T17:50:13.951838+02:00 node2159 lmod: - lmod:: username=vsc40307, cluster=delcatty, arch=sandybridge, jobid=434.master16.delcatty.gent.vsc, cmd=spider, args=^ba$",
+    "raw": "<13>1 2016-06-07T17:50:13.951838+02:00 node2159 lmod: - lmod:: username=vsc40307, cluster=delcatty, jobid=434.master16.delcatty.gent.vsc, cmd=spider, args=^ba$",
     "expected": {
         "@source_host": "node2159",
         "program": "lmod",
         "username": "vsc40307",
         "cluster": "delcatty",
         "jobid": "434.master16.delcatty.gent.vsc",
-        "architecture": "sandybridge",
         "command": "spider",
         "arguments": "^ba$",
     }
 },
 {
-    "raw": "<13>1 2016-06-07T17:29:12.762154+02:00 node2626 lmod: - lmod:: username=vsc40307, cluster=delcatty, arch=sandybridge, jobid=, cmd=list, args=",
+    "raw": "<13>1 2016-06-07T17:29:12.762154+02:00 node2626 lmod: - lmod:: username=vsc40307, cluster=delcatty, jobid=, cmd=list, args=",
     "expected": {
         "@source_host": "node2626",
         "program": "lmod",
         "username": "vsc40307",
         "cluster": "delcatty",
-        "architecture": "sandybridge",
         "command": "list",
     }
 },
 {
-    "raw": "<13>1 2016-06-07T17:29:14.762154+02:00 node2626 lmod: - lmod:: username=vsc40307, cluster=, arch=, jobid=, cmd=list, args=",
+    "raw": "<13>1 2016-06-07T17:29:14.762154+02:00 node2626 lmod: - lmod:: username=vsc40307, cluster=, jobid=, cmd=list, args=",
     "expected": {
         "@source_host": "node2626",
         "program": "lmod",
@@ -77,13 +72,12 @@ data = [
     }
 },
 {
-"raw": "<13>1 2016-06-08T09:20:24.111835+02:00 node2626 lmod: - lmod:: username=vsc40307, cluster=swalot, arch=haswell, jobid=, cmd=swap, args=GCC/6.1.0-2.25 GCC/4.9.3-2.25",
+"raw": "<13>1 2016-06-08T09:20:24.111835+02:00 node2626 lmod: - lmod:: username=vsc40307, cluster=swalot, jobid=, cmd=swap, args=GCC/6.1.0-2.25 GCC/4.9.3-2.25",
     "expected": {
         "@source_host": "node2626",
         "program": "lmod",
         "username": "vsc40307",
         "cluster": "swalot",
-        "architecture": "haswell",
         "command": "swap",
         "arguments": "GCC/6.1.0-2.25 GCC/4.9.3-2.25",
     }
