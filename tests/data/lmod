@@ -1,29 +1,85 @@
 data = [
 {
-    "raw" : "<13>1 2016-02-18T14:52:49.399290+01:00 node2407 lmod: - lmod:: user=vsc40307, cluster=golett, arch=haswell, module=PSI/4.0b6-20160201-intel-2016a-mt-Python-2.7.11, fn=/apps/gent/CO7/haswell-ib/modules/all/PSI/4.0b6-20160201-intel-2016a-mt-Python-2.7.11, jobid=369145.master19.golett.gent.vsc",
+    "raw": "<13>1 2016-06-07T17:50:27.866534+02:00 node2159 lmod: - lmod:: username=vsc40307, cluster=delcatty, jobid=434.master16.delcatty.gent.vsc, cmd=load, args=-GCC",
     "expected": {
+        "@source_host": "node2159",
         "program": "lmod",
         "username": "vsc40307",
-        "cluster": "golett",
-        "architecture": "haswell",
-        "jobid": "369145.master19.golett.gent.vsc",
-        "module_name": "PSI",
-        "module_version": "4.0b6-20160201-intel-2016a-mt-Python-2.7.11",
-        "module_path": "/apps/gent/CO7/haswell-ib/modules/all/PSI/4.0b6-20160201-intel-2016a-mt-Python-2.7.11",
-        "@source_host": "node2407",
+        "cluster": "delcatty",
+        "jobid": "434.master16.delcatty.gent.vsc",
+        "command": "load",
+        "arguments": "-GCC",
     }
 },
 {
-    "raw": "<13>1 2016-02-18T14:53:10.225111+01:00 node2407 lmod: - lmod:: user=vsc40307, cluster=golett, arch=haswell, module=cluster/golett, fn=/etc/modulefiles/vsc/cluster/golett, jobid=",
+    "raw": "<13>1 2016-06-07T17:50:22.658452+02:00 node2159 lmod: - lmod:: username=vsc40307, cluster=delcatty, jobid=434.master16.delcatty.gent.vsc, userload=yes, module=intel/2016a, fn=/apps/gent/SL6/sandybridge/modules/all/intel/2016a",
     "expected": {
         "program": "lmod",
+        "@source_host": "node2159",
+        "program": "lmod",
         "username": "vsc40307",
-        "cluster": "golett",
-        "architecture": "haswell",
-        "module_name": "cluster",
-        "module_version": "golett",
-        "module_path": "/etc/modulefiles/vsc/cluster/golett",
-        "@source_host": "node2407",
+        "cluster": "delcatty",
+        "jobid": "434.master16.delcatty.gent.vsc",
+        "userload": "yes",
+        "module_name": "intel",
+        "module_version": "2016a",
+        "module_path": "/apps/gent/SL6/sandybridge/modules/all/intel/2016a",
+    }
+},
+{
+    "raw": "<13>1 2016-06-07T17:50:22.495571+02:00 node2159 lmod: - lmod:: username=vsc40307, cluster=delcatty, jobid=434.master16.delcatty.gent.vsc, userload=no, module=binutils/2.25-GCCcore-4.9.3, fn=/apps/gent/SL6/sandybridge/modules/all/binutils/2.25-GCCcore-4.9.3",
+    "expected": {
+        "@source_host": "node2159",
+        "program": "lmod",
+        "username": "vsc40307",
+        "cluster": "delcatty",
+        "jobid": "434.master16.delcatty.gent.vsc",
+        "userload": "no",
+        "module_name": "binutils",
+        "module_version": "2.25-GCCcore-4.9.3",
+        "module_path": "/apps/gent/SL6/sandybridge/modules/all/binutils/2.25-GCCcore-4.9.3",
+    }
+},
+{
+    "raw": "<13>1 2016-06-07T17:50:13.951838+02:00 node2159 lmod: - lmod:: username=vsc40307, cluster=delcatty, jobid=434.master16.delcatty.gent.vsc, cmd=spider, args=^ba$",
+    "expected": {
+        "@source_host": "node2159",
+        "program": "lmod",
+        "username": "vsc40307",
+        "cluster": "delcatty",
+        "jobid": "434.master16.delcatty.gent.vsc",
+        "command": "spider",
+        "arguments": "^ba$",
+    }
+},
+{
+    "raw": "<13>1 2016-06-07T17:29:12.762154+02:00 node2626 lmod: - lmod:: username=vsc40307, cluster=delcatty, jobid=, cmd=list, args=",
+    "expected": {
+        "@source_host": "node2626",
+        "program": "lmod",
+        "username": "vsc40307",
+        "cluster": "delcatty",
+        "command": "list",
+    }
+},
+{
+    "raw": "<13>1 2016-06-07T17:29:14.762154+02:00 node2626 lmod: - lmod:: username=vsc40307, cluster=, jobid=, cmd=list, args=",
+    "expected": {
+        "@source_host": "node2626",
+        "program": "lmod",
+        "username": "vsc40307",
+        "command": "list",
+    }
+},
+{
+"raw": "<13>1 2016-06-08T09:20:24.111835+02:00 node2626 lmod: - lmod:: username=vsc40307, cluster=swalot, jobid=, cmd=swap, args=GCC/6.1.0-2.25 GCC/4.9.3-2.25",
+    "expected": {
+        "@source_host": "node2626",
+        "program": "lmod",
+        "username": "vsc40307",
+        "cluster": "swalot",
+        "command": "swap",
+        "arguments": "GCC/6.1.0-2.25 GCC/4.9.3-2.25",
     }
 },
 ]
