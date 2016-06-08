@@ -76,4 +76,16 @@ data = [
         "command": "list",
     }
 },
+{
+"raw": "<13>1 2016-06-08T09:20:24.111835+02:00 node2626 lmod: - lmod:: username=vsc40307, cluster=swalot, arch=haswell, jobid=, cmd=swap, args=GCC/6.1.0-2.25 GCC/4.9.3-2.25",
+    "expected": {
+        "@source_host": "node2626",
+        "program": "lmod",
+        "username": "vsc40307",
+        "cluster": "swalot",
+        "architecture": "haswell",
+        "command": "swap",
+        "arguments": "GCC/6.1.0-2.25 GCC/4.9.3-2.25",
+    }
+},
 ]
