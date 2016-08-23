@@ -4,18 +4,14 @@ def VIRTUALENV_VERSION = "15.0.3"
 def LOGSTASH_VERSION = "2.3.4"
 
 node {
-    stage 'Checkout'
-    echo "work: ${env.WORKSPACE}"
-    echo "pwd: ${pwd()}"
-    checkout scm
-
     stage 'Setup virtualenv'
-    sh "wget -O virtualenv-${VIRTUALENV_VERSION}.tar.gz https://github.com/pypa/virtualenv/archive/${VIRTUALENV_VERSION}.tar.gz"
+    sh "wget -q -O virtualenv-${VIRTUALENV_VERSION}.tar.gz https://github.com/pypa/virtualenv/archive/${VIRTUALENV_VERSION}.tar.gz"
     sh "tar -xzf virtualenv-${VIRTUALENV_VERSION}.tar.gz"
     sh "python virtualenv-${VIRTUALENV_VERSION}/virtualenv.py venv"
     env.PATH = "${pwd()}/venv/bin:${env.PATH}"
-    echo "work: ${env.WORKSPACE}"
-    sh "set"
+
+    stage 'Checkout'
+    checkout scm
 
     stage 'Build'
     sh "pip install vsc-base"
