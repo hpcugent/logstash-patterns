@@ -5,7 +5,7 @@ def LOGSTASH_VERSION = "2.3.4"
 
 node {
     stage 'Checkout'
-    git clean -fxd
+    sh "git clean -fxd"
     checkout scm
 
     stage 'Setup virtualenv'
