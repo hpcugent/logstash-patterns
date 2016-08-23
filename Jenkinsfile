@@ -11,7 +11,7 @@ node {
     sh 'wget https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VIRTUALENV_VERSION}.tar.gz'
     sh 'tar -xzf virtualenv-${VIRTUALENV_VERSION}.tar.gz'
     sh 'python virtualenv-${VIRTUALENV_VERSION}/virtualenv.py bootstrap'
-    sh 'virtualenv-${VIRTUALENV_VERSION}/bin/pip install virtualenv-${VIRTUALENV_VERSION}.tar.gz
+    sh 'virtualenv-${VIRTUALENV_VERSION}/bin/pip install virtualenv-${VIRTUALENV_VERSION}.tar.gz'
     sh 'virtualenv-${VIRTUALENV_VERSION}/bin/virtualenv venv'
     sh 'source venv/bin/activate'
 
