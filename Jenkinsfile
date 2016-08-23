@@ -1,29 +1,26 @@
 #!/usr/bin/env groovy
 
-
 node {
-    LOGSTASH_VERSION = '2.3.4'
-    VIRTUALENV_VERSION = '15.0.3'
+    def LOGSTASH_VERSION = '2.3.4'
+    def VIRTUALENV_VERSION = '15.0.3'
 
     stage 'Checkout'
     checkout scm
 
     stage 'Setup virtualenv'
-    sh 'wget -q -O virtualenv-15.0.3.tar.gz https://github.com/pypa/virtualenv/archive/15.0.3.tar.gz'
+    echo 'Using ${VIRTUALENV_VERSION}'
+    sh 'wget -O virtualenv-15.0.3.tar.gz https://github.com/pypa/virtualenv/archive/${VIRTUALENV_VERSION}.tar.gz'
     sh 'tar -xzf virtualenv-15.0.3.tar.gz'
     sh 'python virtualenv-15.0.3/virtualenv.py venv'
     env.PATH = "${pwd()}/venv/bin:${env.PATH}"
-    sh 'set'
-    echo "PATH is ${env.PATH}"
 
     stage 'Build'
-    sh 'set'
-    echo "PATH is ${env.PATH}"
     sh 'pip install vsc-base'
     sh 'wget -q https://download.elastic.co/logstash/logstash/logstash-2.3.4.tar.gz'
     sh 'tar -xzf logstash-2.3.4.tar.gz'
     env.PATH = "${pwd()}/logstash-2.3.4/bin:${env.PATH}"
 
     stage 'Test'
-    sh 'cd tests && python runtest.py -d'
+    sh 'cd tests && python runtest.py'
+    junit '**/test-reports/*.xml'
 }
