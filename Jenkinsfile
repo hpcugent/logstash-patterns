@@ -11,7 +11,7 @@ node {
     sh "wget -O virtualenv-${VIRTUALENV_VERSION}.tar.gz https://github.com/pypa/virtualenv/archive/${VIRTUALENV_VERSION}.tar.gz"
     sh "tar -xzf virtualenv-${VIRTUALENV_VERSION}.tar.gz"
     sh "python virtualenv-${VIRTUALENV_VERSION}/virtualenv.py venv"
-    sh ". venv/bin/activate"
+    env.PATH = "${pwd()}/venv/bin:${env.PATH}"
 
     stage 'Build'
     sh "pip install vsc-base"
@@ -21,5 +21,4 @@ node {
 
     stage 'Test'
     sh "cd tests && python runtest.py"
-    junit '**/test-reports/*.xml'
 }
