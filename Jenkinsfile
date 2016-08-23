@@ -9,11 +9,9 @@ node {
     checkout scm
 
     stage 'Setup virtualenv'
-    sh 'wget -O virtualenv-15.0.3.tar.gz https://github.com/pypa/virtualenv/archive/15.0.3.tar.gz'
+    sh 'wget -q -O virtualenv-15.0.3.tar.gz https://github.com/pypa/virtualenv/archive/15.0.3.tar.gz'
     sh 'tar -xzf virtualenv-15.0.3.tar.gz'
-    sh 'python virtualenv-15.0.3/virtualenv.py bootstrap'
-    sh 'bootstrap/bin/pip install virtualenv-15.0.3.tar.gz'
-    sh 'bootstrap/bin/virtualenv venv'
+    sh 'python virtualenv-15.0.3/virtualenv.py venv'
     sh 'source venv/bin/activate'
 
     stage 'Build'
