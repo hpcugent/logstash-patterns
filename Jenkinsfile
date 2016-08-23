@@ -13,6 +13,8 @@ node {
     sh 'tar -xzf virtualenv-15.0.3.tar.gz'
     sh 'python virtualenv-15.0.3/virtualenv.py venv'
     env.PATH = "${pwd()}/venv/bin:${env.PATH}"
+    sh 'set'
+    echo "PATH is ${env.PATH}"
 
     stage 'Build'
     sh 'pip install vsc-base'
