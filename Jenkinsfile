@@ -17,6 +17,8 @@ node {
     echo "PATH is ${env.PATH}"
 
     stage 'Build'
+    sh 'set'
+    echo "PATH is ${env.PATH}"
     sh 'pip install vsc-base'
     sh 'wget -q https://download.elastic.co/logstash/logstash/logstash-2.3.4.tar.gz'
     sh 'tar -xzf logstash-2.3.4.tar.gz'
