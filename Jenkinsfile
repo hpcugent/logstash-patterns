@@ -5,8 +5,8 @@ def LOGSTASH_VERSION = "2.3.4"
 
 node {
     stage 'Checkout'
-    sh "git clean -fxd"
     checkout scm
+    sh "git clean -fxd"
 
     stage 'Setup virtualenv'
     sh "wget -q -O virtualenv-${VIRTUALENV_VERSION}.tar.gz https://github.com/pypa/virtualenv/archive/${VIRTUALENV_VERSION}.tar.gz"
