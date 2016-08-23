@@ -5,6 +5,8 @@ def LOGSTASH_VERSION = "2.3.4"
 
 node {
     stage 'Checkout'
+    echo "work: ${env.WORKSPACE}"
+    echo "pwd: ${pwd()}"
     checkout scm
 
     stage 'Setup virtualenv'
@@ -12,6 +14,8 @@ node {
     sh "tar -xzf virtualenv-${VIRTUALENV_VERSION}.tar.gz"
     sh "python virtualenv-${VIRTUALENV_VERSION}/virtualenv.py venv"
     env.PATH = "${pwd()}/venv/bin:${env.PATH}"
+    echo "work: ${env.WORKSPACE}"
+    sh "set"
 
     stage 'Build'
     sh "pip install vsc-base"
