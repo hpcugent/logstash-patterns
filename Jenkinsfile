@@ -1,9 +1,10 @@
 #!/usr/bin/env groovy
 
-def LOGSTASH_VERSION = '2.3.4'
-def VIRTUALENV_VERSION = '15.0.3'
 
 node {
+    LOGSTASH_VERSION = '2.3.4'
+    VIRTUALENV_VERSION = '15.0.3'
+
     stage 'Checkout'
     checkout scm
 
