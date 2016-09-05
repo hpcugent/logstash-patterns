@@ -15,7 +15,7 @@ REALWORD [\w-]+
 
 STREAM_MSG stream_copy=%{NUMBER:stream_copy:float} stream_scale=%{NUMBER:stream_scale:float} stream_add=%{NUMBER:stream_add:float} stream_triad=%{NUMBER:stream_triad:float}
 WRF_MSG wrf_success=%{WORD:success}
-IMB_MSG benchmark=%{REALWORD:benchmark} bytes=%{NUMBER:bytes:int} iter=%{INT:iter:int} runtime=%{NUMBER:runtime:float} t_min_us=%{NUMBER:t_min_us:float} t_max_us=%{NUMBER:t_max_us:float} t_avg_us=%{NUMBER:t_avg_us:float} rate=(%{INT:rate:int})?
+IMB_MSG benchmark=%{REALWORD:benchmark} bytes=%{NUMBER:bytes:int} iter=%{INT:iter:int} t_min_us=%{NUMBER:t_min_us:float} t_max_us=%{NUMBER:t_max_us:float} t_avg_us=%{NUMBER:t_avg_us:float} rate=(%{INT:rate:int})?
 
 JUBE_INFO jube_id=%{REALWORD:jube_id} jube_label=%{REALWORD:jube_label}
 JUBE_TIME_INFO time=%{TIMESTAMP_ISO8601:time} seconds=%{INT:seconds:int}
