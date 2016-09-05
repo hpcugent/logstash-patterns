@@ -1,10 +1,17 @@
 """
 {
-    "raw": "",
+    "raw": None,
     "expected" : None,
 },
 
 """
 data = [
+    {
+        "raw": "<14>1 2016-08-01T11:48:30.071651+02:00 node2602 jube[89798]: JUBE jube_id=21235 jube_label=None time=2016-08-01T11:45:23 seconds=1470044723 user=vsc40075 host=node2602 module=IMB/4.0.1-intel-2015a input=mpi1 benchmark=Reduce pbs_job_id=21235 pbs_nodes=2 pbs_ppn= exec_host=node2602.swalot.gent.vsc/0-19,node2603.swalot.gent.vsc/0-19 cputime=751 walltime=176 compute_walltime= bytes=1048576 iter=40 runtime=0m1.556s t_min_us=3576.84 t_max_us=3693.70 t_avg_us=3651.12 rate=",
+        "expected": {
 
+        },
+
+
+    },
 ]
