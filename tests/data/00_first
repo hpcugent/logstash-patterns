@@ -1,10 +1,9 @@
 """
 {
-    "raw": "",
+    "raw": None,
     "expected" : None,
 },
 
 """
 data = [
-
 ]
