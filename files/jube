@@ -17,7 +17,7 @@ STREAM_MSG stream_copy=%{NUMBER:stream_copy:float} stream_scale=%{NUMBER:stream_
 WRF_MSG wrf_success=%{WORD:success}
 IMB_MSG benchmark=%{REALWORD:benchmark} bytes=%{NUMBER:bytes:int} iter=%{INT:iter:int} t_min_us=%{NUMBER:t_min_us:float} t_max_us=%{NUMBER:t_max_us:float} t_avg_us=%{NUMBER:t_avg_us:float} rate=(%{INT:rate:int})?
 
-JUBE_INFO jube_id=%{REALWORD:jube_id} jube_label=%{REALWORD:jube_label}
+JUBE_INFO cluster=%{REALWORD:cluster} jube_id=%{REALWORD:jube_id} jube_label=%{REALWORD:jube_label}
 JUBE_TIME_INFO time=%{TIMESTAMP_ISO8601:time} seconds=%{INT:seconds:int}
 JUBE_ENV_INFO user=%{USERNAME_PAT} host=%{REALWORD:host} module=%{MODULE_NAME:module} input=%{JOB_INPUT:input}
 JUBE_JOB_INFO pbs_job_id=%{REALWORD:pbs_job_id} pbs_nodes=%{EXEC_HOST:pbs_nodes} pbs_ppn=(%{INT:pbs_ppn:int})? exec_host=%{EXEC_HOST:exec_host}

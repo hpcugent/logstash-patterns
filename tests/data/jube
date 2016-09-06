@@ -7,11 +7,12 @@
 """
 data = [
     {
-        "raw": "<14>1 2015-10-27T19:32:37.664122+01:00 node711 jube[25037]: - jube[25037]::  JUBE jube_id=29794 jube_label=None time=2015-10-27T19:28:45 seconds=1445970525 user=vsc40075 host=node711 module=STREAM/5.10-intel-2015a input=100M-OpenMP pbs_job_id=29794 pbs_nodes=1 pbs_ppn= exec_host=node711.dugtrio.gent.vsc/0-11 cputime=2174 walltime=186 compute_walltime= stream_copy=41843.1 stream_scale=40382.8 stream_add=41208.2 stream_triad=40869.2",
+        "raw": "<14>1 2015-10-27T19:32:37.664122+01:00 node711 jube[25037]: - jube[25037]::  JUBE cluster=swalot jube_id=29794 jube_label=None time=2015-10-27T19:28:45 seconds=1445970525 user=vsc40075 host=node711 module=STREAM/5.10-intel-2015a input=100M-OpenMP pbs_job_id=29794 pbs_nodes=1 pbs_ppn= exec_host=node711.dugtrio.gent.vsc/0-11 cputime=2174 walltime=186 compute_walltime= stream_copy=41843.1 stream_scale=40382.8 stream_add=41208.2 stream_triad=40869.2",
         "expected": {
             u'cputime': 2174,
             u'exec_host': u'node711.dugtrio.gent.vsc/0-11',
             u'input': u'100M-OpenMP',
+            u'cluster': u'swalot',
             u'jube_id': u'29794',
             u'jube_label': u'None',
             u'module': u'STREAM/5.10-intel-2015a',
@@ -28,12 +29,13 @@ data = [
         }
     },
     {
-        "raw": "<14>1 2015-10-30T16:18:07.980567+01:00 node706 jube[32460]: - jube[32460]::  JUBE jube_id=29833 jube_label=None time=2015-10-30T16:12:46 seconds=1446217966 user=vsc40075 host=node706 module=WRF/3.6.1-intel-2015a-dmpar input=conus_12_km pbs_job_id=29833 pbs_nodes=2 pbs_ppn= exec_host=node706.dugtrio.gent.vsc/0-11,node708.dugtrio.gent.vsc/0-11 cputime=2363 walltime=280 compute_walltime=252 wrf_success=true",
+        "raw": "<14>1 2015-10-30T16:18:07.980567+01:00 node706 jube[32460]: - jube[32460]::  JUBE cluster=swalot jube_id=29833 jube_label=None time=2015-10-30T16:12:46 seconds=1446217966 user=vsc40075 host=node706 module=WRF/3.6.1-intel-2015a-dmpar input=conus_12_km pbs_job_id=29833 pbs_nodes=2 pbs_ppn= exec_host=node706.dugtrio.gent.vsc/0-11,node708.dugtrio.gent.vsc/0-11 cputime=2363 walltime=280 compute_walltime=252 wrf_success=true",
         "expected": {
             u'compute_walltime': 252,
             u'cputime': 2363,
             u'exec_host': u'node706.dugtrio.gent.vsc/0-11,node708.dugtrio.gent.vsc/0-11',
             u'input': u'conus_12_km',
+            u'cluster': u'swalot',
             u'jube_id': u'29833',
             u'jube_label': u'None',
             u'module': u'WRF/3.6.1-intel-2015a-dmpar',
@@ -48,11 +50,12 @@ data = [
         }
     },
     {
-        "raw": "<14>1 2015-10-27T19:32:37.664122+01:00 node711 jube[25037]: - jube[25037]::  JUBE jube_id=29794 jube_label=None time=2015-10-27T19:28:45 seconds=1445970525 user=vsc40075 host=node711 module=STREAM/5.10-intel-2015a input=100M-OpenMP pbs_job_id=29794 pbs_nodes=1 pbs_ppn= exec_host=node711.dugtrio.gent.vsc/0-11 cputime=2174 walltime=186 compute_walltime= wrf_success=true",
+        "raw": "<14>1 2015-10-27T19:32:37.664122+01:00 node711 jube[25037]: - jube[25037]::  JUBE cluster=swalot jube_id=29794 jube_label=None time=2015-10-27T19:28:45 seconds=1445970525 user=vsc40075 host=node711 module=STREAM/5.10-intel-2015a input=100M-OpenMP pbs_job_id=29794 pbs_nodes=1 pbs_ppn= exec_host=node711.dugtrio.gent.vsc/0-11 cputime=2174 walltime=186 compute_walltime= wrf_success=true",
         "expected": {
             u'cputime': 2174,
             u'exec_host': u'node711.dugtrio.gent.vsc/0-11',
             u'input': u'100M-OpenMP',
+            u'cluster': u'swalot',
             u'jube_id': u'29794',
             u'jube_label': u'None',
             u'module': u'STREAM/5.10-intel-2015a',
@@ -66,11 +69,12 @@ data = [
         },
     },
     {
-        "raw": "<14>1 2015-11-26T17:39:27.190173+01:00 node2422 jube[512]: - jube[512]:: JUBE jube_id=170028 jube_label=golett-tier2-2015q4 time=2015-11-26T17:25:34 seconds=1448555134 user=vsc40075 host=node2422 module=STREAM/5.10-intel-2015a input=1B-OpenMP pbs_job_id=170028 pbs_nodes=node2422.golett.gent.vsc pbs_ppn= exec_host=node2422.golett.gent.vsc/0-23 cputime=18598 walltime=784 compute_walltime= stream_copy=93683.4 stream_scale=96370.9 stream_add=103748.4 stream_triad=103493.3",
+        "raw": "<14>1 2015-11-26T17:39:27.190173+01:00 node2422 jube[512]: - jube[512]:: JUBE cluster=swalot jube_id=170028 jube_label=golett-tier2-2015q4 time=2015-11-26T17:25:34 seconds=1448555134 user=vsc40075 host=node2422 module=STREAM/5.10-intel-2015a input=1B-OpenMP pbs_job_id=170028 pbs_nodes=node2422.golett.gent.vsc pbs_ppn= exec_host=node2422.golett.gent.vsc/0-23 cputime=18598 walltime=784 compute_walltime= stream_copy=93683.4 stream_scale=96370.9 stream_add=103748.4 stream_triad=103493.3",
         "expected" : {
             u'cputime': 18598,
             u'exec_host': u'node2422.golett.gent.vsc/0-23',
             u'input': u'1B-OpenMP',
+            u'cluster': u'swalot',
             u'jube_id': u'170028',
             u'jube_label': u'golett-tier2-2015q4',
             u'module': u'STREAM/5.10-intel-2015a',
@@ -88,11 +92,12 @@ data = [
         },
     },
     {
-        "raw": "<14>1 2016-08-01T11:48:30.071651+02:00 node2602 jube[89798]: JUBE jube_id=21235 jube_label=None time=2016-08-01T11:45:23 seconds=1470044723 user=vsc40075 host=node2602 module=IMB/4.0.1-intel-2015a input=mpi1 pbs_job_id=21235 pbs_nodes=2 pbs_ppn= exec_host=node2602.swalot.gent.vsc/0-19,node2603.swalot.gent.vsc/0-19 cputime=751 walltime=176 compute_walltime= benchmark=Reduce bytes=1048576 iter=40 t_min_us=3576.84 t_max_us=3693.70 t_avg_us=3651.12 rate=",
+        "raw": "<14>1 2016-08-01T11:48:30.071651+02:00 node2602 jube[89798]: JUBE cluster=swalot jube_id=21235 jube_label=None time=2016-08-01T11:45:23 seconds=1470044723 user=vsc40075 host=node2602 module=IMB/4.0.1-intel-2015a input=mpi1 pbs_job_id=21235 pbs_nodes=2 pbs_ppn= exec_host=node2602.swalot.gent.vsc/0-19,node2603.swalot.gent.vsc/0-19 cputime=751 walltime=176 compute_walltime= benchmark=Reduce bytes=1048576 iter=40 t_min_us=3576.84 t_max_us=3693.70 t_avg_us=3651.12 rate=",
         "expected": {
             u'cputime': 751,
             u'exec_host': u'node2602.swalot.gent.vsc/0-19,node2603.swalot.gent.vsc/0-19',
             u'input': u'mpi1',
+            u'cluster': u'swalot',
             u'jube_id': u'21235',
             u'jube_label': u'None',
             u'module': u'IMB/4.0.1-intel-2015a',
