@@ -2,7 +2,7 @@ data = [
 {
     "raw" : "2015-03-19T08:13:12.916717+01:00 one01 oned: [Z0][VMM][D]: VM 65 successfully monitored: STATE=a CPU=1.0 MEMORY=4381156 NETRX=131913740597 NETTX=25058980345 DISK_SIZE=[ ID=0, SIZE=10240 ] DISK_SIZE=[ ID=1, SIZE=0 ]",
     "expected" : {
-           "level" : "D",
+           "onelevel" : "D",
            "vmid" : 65,
            "vmstate" : "a",
            "vmucpu" : 1.0,
