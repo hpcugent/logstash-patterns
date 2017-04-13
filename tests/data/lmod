@@ -82,4 +82,14 @@ data = [
         "arguments": "GCC/6.1.0-2.25 GCC/4.9.3-2.25",
     }
 },
+{
+"raw": "<13>2017-04-13T11:01:26+02:00 nic60 lmod: username=lsiess, jobid=1063350, error=e_Failed_2_Find, name=^/u/lsiess/use%.own$, msg=e_Failed_2_Find",
+    "expected": {
+        "@source_host": "nic60",
+        "program": "lmod",
+        "username": "lsiess",
+        "jobid": "1063350",
+        "error": "e_Failed_2_Find",
+    }
+}
 ]
