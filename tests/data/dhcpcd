@@ -1,0 +1,61 @@
+data = [
+{
+    "raw": "<13>2017-04-13T08:30:41.369668+00:00 gw dhcpd: DHCPDISCOVER from 00:23:7d:a5:87:cf via eth0",
+    "expected" : {
+        'dhcp_client_mac': '00:23:7d:a5:87:cf',
+        'dhcp_device': 'eth0',
+        'dhcp_operation': 'DISCOVER',
+        'program': 'dhcpd',
+    }
+},
+{
+    "raw": "<13>2017-04-13T08:30:41.369689+00:00 gw dhcpd: DHCPOFFER on 172.31.240.173 to 00:23:7d:a5:87:cf via eth0",
+    "expected" : {
+        'dhcp_client_ip': '172.31.240.173',
+        'dhcp_client_mac': '00:23:7d:a5:87:cf',
+        'dhcp_device': 'eth0',
+        'dhcp_operation': 'OFFER',
+        'program': 'dhcpd',
+    }
+},
+{
+    "raw": "<13>2017-04-13T08:30:47.351178+00:00 gw dhcpd: DHCPINFORM from 172.31.241.244 via eth0",
+    "expected" : {
+        'dhcp_client_ip': '172.31.241.244',
+        'dhcp_device': 'eth0',
+        'dhcp_operation': 'INFORM',
+        'program': 'dhcpd',
+    }
+},
+{
+    "raw": "<13>2017-04-13T08:30:47.351207+00:00 gw dhcpd: DHCPACK to 172.31.241.244 (00:22:00:b8:4b:01) via eth0",
+    "expected" : {
+        'dhcp_client_ip': '172.31.241.244',
+        'dhcp_client_mac': '00:22:00:b8:4b:01',
+        'dhcp_device': 'eth0',
+        'dhcp_operation': 'ACK',
+        'program': 'dhcpd',
+    }
+},
+{
+    "raw": "<13>2017-04-13T08:25:36.607925+00:00 gw dhcpd: DHCPDISCOVER from 00:50:56:86:28:be (WIN-0ORLD2C86JB) via eth0",
+    "expected" : {
+        'dhcp_client_mac': '00:50:56:86:28:be',
+        'dhcp_client_name': 'WIN-0ORLD2C86JB',
+        'dhcp_device': 'eth0',
+        'dhcp_operation': 'DISCOVER',
+        'program': 'dhcpd',
+    }
+},
+{
+    "raw": "<13>2017-04-13T08:25:36.607968+00:00 gw dhcpd: DHCPOFFER on 172.31.241.157 to 00:50:56:86:28:be (WIN-0ORLD2C86JB) via eth0",
+    "expected" : {
+        'dhcp_client_ip': '172.31.241.157',
+        'dhcp_client_mac': '00:50:56:86:28:be',
+        'dhcp_client_name': 'WIN-0ORLD2C86JB',
+        'dhcp_device': 'eth0',
+        'dhcp_operation': 'OFFER',
+        'program': 'dhcpd',
+    }
+},
+]
