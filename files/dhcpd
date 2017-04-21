@@ -1,0 +1,13 @@
+DHCPD_VIA via (%{IP:dhcp_relay_ip}|(?<dhcp_device>[^: ]+))
+
+DHCPD_OPERATION DHCP(%{DHCPD_DISCOVER}|%{DHCPD_ACK}|%{DHCPD_OFFER}|%{DHCPD_REQUEST}|%{DHCPD_DECLINE}|%{DHCPD_RELEASE}|%{DHCPD_INFORM}|%{DHCPD_LEASE})(: %{GREEDYDATA:dhcpd_message})?
+DHCPD_DISCOVER (?<dhcp_operation>DISCOVER) from %{MAC:dhcp_client_mac}( \(%{DATA:dhcp_client_name}\))? %{DHCPD_VIA}
+DHCPD_OFFER (?<dhcp_operation>(OFFER|N?ACK)) on %{IP:dhcp_client_ip} to %{MAC:dhcp_client_mac}( \(%{DATA:dhcp_client_name}\))? %{DHCPD_VIA}
+DHCPD_ACK (?<dhcp_operation>ACK) to %{IP:dhcp_client_ip} \(%{MAC:dhcp_client_mac}\) %{DHCPD_VIA}
+DHCPD_REQUEST (?<dhcp_operation>REQUEST) for %{IP:dhcp_client_ip}( \(%{DATA:dhcp_server_ip}\))? from %{MAC:dhcp_client_mac}( \(%{DATA:dhcp_client_name}\))? %{DHCPD_VIA}
+DHCPD_DECLINE (?<dhcp_operation>DECLINE) of %{IP:dhcp_client_ip} from %{MAC:dhcp_client_mac}( \(%{DATA:dhcp_client_name}\))? %{DHCPD_VIA}
+DHCPD_RELEASE (?<dhcp_operation>RELEASE) of %{IP:dhcp_client_ip} from %{MAC:dhcp_client_mac}( \(%{DATA:dhcp_client_name}\))? %{DHCPD_VIA} \((?<dhcpd_release>(not )?found)\)
+DHCPD_INFORM (?<dhcp_operation>INFORM) from %{IP:dhcp_client_ip}? %{DHCPD_VIA}
+DHCPD_LEASE (?<dhcp_operation>LEASE(QUERY|UNKNOWN|ACTIVE|UNASSIGNED)) (from|to) %{IP:dhcp_client_ip} for (IP %{IP:dhcp_leasequery_ip}|client-id %{NOTSPACE:dhcp_leasequery_id}|MAC address %{MAC:dhcp_leasequery_mac})( \(%{NUMBER:dhcp_leasequery_associated} associated IPs\))?
+
+DHCPD %{DHCPD_OPERATION}

@@ -1,0 +1,1 @@
+SINGULARITY_MSG \s*user=%{USERNAME_PAT} image=%{DATA:imagepath} jobid=%{DATA:jobid} cmd=%{GREEDYDATA:cmd}

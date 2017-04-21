@@ -1,0 +1,19 @@
+data = [
+{
+    "raw": "<13>2017-04-06T14:45:10.227767+02:00 nic66 singularity: user=root image=/tmp/log.img jobid= cmd=shell",
+    "expected" : {
+        "program": "singularity",
+        "username": "root",
+        "imagepath": "/tmp/log.img",
+        },
+},
+{
+    "raw": "<13>2017-04-06T14:45:10.227767+02:00 nic66 singularity: user=root image=/tmp/log.img jobid=123456 cmd=shell",
+    "expected" : {
+        "program": "singularity",
+        "username": "root",
+        "imagepath": "/tmp/log.img",
+        "jobid": "123456",
+        },
+},
+]

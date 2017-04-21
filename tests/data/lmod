@@ -82,4 +82,46 @@ data = [
         "arguments": "GCC/6.1.0-2.25 GCC/4.9.3-2.25",
     }
 },
+{
+"raw": "<13>2017-04-13T11:01:26+02:00 nic60 lmod: username=lsiess, jobid=1063350, error=e_Failed_2_Find, name=^/u/lsiess/use%.own$, msg=e_Failed_2_Find",
+    "expected": {
+        "@source_host": "nic60",
+        "program": "lmod",
+        "username": "lsiess",
+        "jobid": "1063350",
+        "error": "e_Failed_2_Find",
+        "module": "^/u/lsiess/use%.own$",
+    }
+},
+{
+"raw": "<13>2017-04-13T11:01:23+02:00 nic60 lmod: username=lsiess, jobid=1063350, error=e_Failed_Load, module_list=openmpi/1.6.5/gcc/4.8.2, msg=e_Failed_Load",
+    "expected": {
+        "@source_host": "nic60",
+        "program": "lmod",
+        "username": "lsiess",
+        "jobid": "1063350",
+        "error": "e_Failed_Load",
+        "module": "openmpi/1.6.5/gcc/4.8.2",
+    }
+},
+{
+"raw": "<13>2017-04-12T11:36:06.137987+02:00 nic66 lmod: username=wapoelma, jobid=, error=e_Spdr_Timeout, msg=e_Spdr_Timeout",
+    "expected": {
+        "@source_host": "nic66",
+        "program": "lmod",
+        "username": "wapoelma",
+        "error": "e_Spdr_Timeout",
+    }
+},
+{
+"raw": "<13>2017-04-12T20:40:20+02:00 nic113 lmod: username=svaneck, jobid=1062592, error=e_No_AutoSwap, oldVersion=2015.1.133-GCC-4.9.2, sn=ifort, newVersion=, msg=e_No_AutoSwap, newFullName=ifort, oldFullName=ifort/2015.1.133-GCC-4.9.2",
+    "expected": {
+        "@source_host": "nic113",
+        "program": "lmod",
+        "username": "svaneck",
+        "jobid": "1062592",
+        "error": "e_No_AutoSwap",
+        "error_msg": "oldVersion=2015.1.133-GCC-4.9.2, sn=ifort, newVersion=, msg=e_No_AutoSwap, newFullName=ifort, oldFullName=ifort/2015.1.133-GCC-4.9.2",
+    }
+},
 ]

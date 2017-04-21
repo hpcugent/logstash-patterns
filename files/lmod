@@ -1,5 +1,9 @@
-LMOD_GENERAL (?:- lmod::)\s*username=%{USERNAME_PAT}, cluster=%{DATA:cluster}, jobid=%{DATA:jobid}
+LMOD_GENERAL (?:- lmod::)?\s*username=%{USERNAME_PAT},(?: cluster=%{DATA:cluster},)? jobid=%{DATA:jobid}
 LMOD_USERLOAD (?:yes|no)
 LMOD_LOAD userload=%{LMOD_USERLOAD:userload}, module=%{DATA:module_name}/%{DATA:module_version}, fn=%{GREEDYDATA:module_path}
 LMOD_CMD cmd=%{DATA:command}, args=%{GREEDYDATA:arguments}
-LMOD_MSG %{LMOD_GENERAL}, (?:%{LMOD_LOAD}|%{LMOD_CMD})
+LMOD_ERROR error=%{DATA:error}, (?:%{LMOD_FAILED_LOAD}|%{LMOD_FAILED_FIND}|%{LMOD_ERROR_OTHER})
+LMOD_FAILED_LOAD name=%{DATA:module}, msg=
+LMOD_FAILED_FIND module_list=%{DATA:module}, msg=
+LMOD_ERROR_OTHER %{GREEDYDATA:error_msg}
+LMOD_MSG %{LMOD_GENERAL}, (?:%{LMOD_LOAD}|%{LMOD_CMD}|%{LMOD_ERROR})

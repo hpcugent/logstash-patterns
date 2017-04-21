@@ -1,0 +1,15 @@
+language: python
+python: 2.7
+env:
+    - LOGSTASH_VERSION=2.3.1
+addons:
+  apt:
+    packages: openjdk-7-jre-headless
+install:
+    - cd $HOME
+    - easy_install vsc-base
+    - wget https://download.elastic.co/logstash/logstash/logstash-${LOGSTASH_VERSION}.tar.gz
+    - tar -xzf logstash-${LOGSTASH_VERSION}.tar.gz
+    - export PATH=$HOME/logstash-${LOGSTASH_VERSION}/bin:$PATH
+script:
+    - cd $TRAVIS_BUILD_DIR/tests && python runtest.py

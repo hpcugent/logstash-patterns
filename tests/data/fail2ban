@@ -1,0 +1,23 @@
+data = [
+{
+    "raw": "<30>2017-04-13T12:05:28+02:00 nic63 fail2ban.filter[5890]: INFO [sshd] Found 164.15.113.39",
+    "expected" : {
+        'action': 'Found',
+        'clientip': '164.15.113.39',
+    },
+},
+{
+    "raw": "<29>2017-04-13T11:59:45+02:00 nic61 fail2ban.actions[5827]: NOTICE [sshd] Unban 182.100.67.76",
+    "expected" : {
+        'action': 'Unban',
+        'clientip': '182.100.67.76',
+    },
+},
+{
+    "raw": "<29>2017-04-13T11:50:11+02:00 nic61 fail2ban.actions[5827]: NOTICE [sshd] Ban 177.11.41.113",
+    "expected" : {
+        'action': 'Ban',
+        'clientip': '177.11.41.113',
+    },
+},
+]
