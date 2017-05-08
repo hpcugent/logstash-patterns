@@ -6,6 +6,9 @@ def LOGSTASH_VERSION = "5.1.1"
 node {
     stage 'Checkout'
     checkout scm
+    env.JAVA_HOME="${tool 'jdk8'}"
+    env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+
     sh "git clean -fxd"
 
     stage 'Setup virtualenv'
