@@ -2,7 +2,7 @@ data = [
 {
     "raw" : "2015-03-19T08:13:12.916717+01:00 one01 oned: [Z0][VMM][D]: VM 65 successfully monitored: STATE=a CPU=1.0 MEMORY=4381156 NETRX=131913740597 NETTX=25058980345 DISK_SIZE=[ ID=0, SIZE=10240 ] DISK_SIZE=[ ID=1, SIZE=0 ]",
     "expected" : {
-           "level" : "D",
+           "onelevel" : "D",
            "vmid" : 65,
            "vmstate" : "a",
            "vmucpu" : 1.0,
@@ -14,7 +14,7 @@ data = [
 {
     "raw": "2015-03-19T10:20:53.019214+01:00 one01 oned[16433]: [VM 149][Z0][LCM][I]: New VM state is RUNNING",
     "expected": {
-        "level" : "I",
+        "onelevel" : "I",
         "vmid" : u'149',
         "vmstate" : "RUNNING",
     }
@@ -22,7 +22,7 @@ data = [
 {
     "raw": "2015-03-19T13:49:29.857986+01:00 one01 oned[16433]: [Z0][ONE][E]: Error monitoring Host hyp101 (29): Error executing probes",
     "expected": {
-        "level" : "E",
+        "onelevel" : "E",
         "hypervisor" : "hyp101",
         "hostid" : 29,
     }
@@ -30,7 +30,7 @@ data = [
 {
     "raw": "2015-03-19T10:20:50.038092+01:00 one01 mm_sched[16436]: [Z0][VM][I]: Dispatching VM 149 to host 32 and datastore 0",
     "expected": {
-        "level" : "I",
+        "onelevel" : "I",
         "vmid" : u'149',
         "hostid" : u'32',
         "datastoreid" : 0,
@@ -39,7 +39,7 @@ data = [
 {
     "raw": "2015-03-19T10:37:40.619650+01:00 one01 oned[16433]: [VM 149][Z0][VMM][W]: Ignored: LOG I 149 Successfully execute transfer manager driver operation: tm_delete.",
     "expected": {
-        "level" : "W",
+        "onelevel" : "W",
         "vmid" : u'149',
     }
 },

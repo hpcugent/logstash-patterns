@@ -32,7 +32,7 @@ from distutils.core import setup
 import glob
 
 setup(name="logstash-patterns",
-      version="1.1.12",
+      version="1.2",
       description="Grok patterns for logstash",
       long_description="""Grok patterns for parsing log messages with logstash.
 

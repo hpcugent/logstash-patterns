@@ -1,11 +1,14 @@
 #!/usr/bin/env groovy
 
 def VIRTUALENV_VERSION = "15.0.3"
-def LOGSTASH_VERSION = "2.3.4"
+def LOGSTASH_VERSION = "5.1.1"
 
 node {
     stage 'Checkout'
     checkout scm
+    env.JAVA_HOME="${tool 'jdk8'}"
+    env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+
     sh "git clean -fxd"
 
     stage 'Setup virtualenv'
@@ -16,7 +19,7 @@ node {
 
     stage 'Build'
     sh "pip install vsc-base"
-    sh "wget -q https://download.elastic.co/logstash/logstash/logstash-${LOGSTASH_VERSION}.tar.gz"
+    sh "wget -q https://artifacts.elastic.co/downloads/logstash/logstash-${LOGSTASH_VERSION}.tar.gz"
     sh "tar -xzf logstash-${LOGSTASH_VERSION}.tar.gz"
     env.PATH = "${pwd()}/logstash-${LOGSTASH_VERSION}/bin:${env.PATH}"
 

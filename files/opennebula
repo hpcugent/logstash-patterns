@@ -1,8 +1,8 @@
-OPENNEBULA_ONED_MONITOR_VM .*?\[%{WORD:level}\]: VM %{INT:vmid:int} .*?: STATE\=%{WORD:vmstate} CPU\=%{NUMBER:vmucpu:float} MEMORY\=%{INT:vmmem:int} NETRX\=%{INT:vmnetrx:int} NETTX\=%{INT:vmnettx:int} .*?
-OPENNEBULA_ONED_MONITOR_HYP .*?\[%{WORD:level}\]: .*? monitoring Host %{WORD:hypervisor} \(%{INT:hostid:int}\)
-OPENNEBULA_ONED_VM_STATUS \[VM %{INT:vmid:int}\].*?\[%{WORD:level}\]: .*? state is %{WORD:vmstate}
-OPENNEBULA_SCHED_STATUS .*?\[%{WORD:level}\]: .*? VM %{INT:vmid:int} .*? host %{INT:hostid:int} .*? datastore %{INT:datastoreid:int}
-OPENNEBULA_ONED_GENERIC_VM \[VM %{INT:vmid:int}\].*?\[%{WORD:level}\]: .*?
+OPENNEBULA_ONED_MONITOR_VM .*?\[%{WORD:onelevel}\]: VM %{INT:vmid:int} .*?: STATE\=%{WORD:vmstate} CPU\=%{NUMBER:vmucpu:float} MEMORY\=%{INT:vmmem:int} NETRX\=%{INT:vmnetrx:int} NETTX\=%{INT:vmnettx:int} .*?
+OPENNEBULA_ONED_MONITOR_HYP .*?\[%{WORD:onelevel}\]: .*? monitoring Host %{WORD:hypervisor} \(%{INT:hostid:int}\)
+OPENNEBULA_ONED_VM_STATUS \[VM %{INT:vmid:int}\].*?\[%{WORD:onelevel}\]: .*? state is %{WORD:vmstate}
+OPENNEBULA_SCHED_STATUS .*?\[%{WORD:onelevel}\]: .*? VM %{INT:vmid:int} .*? host %{INT:hostid:int} .*? datastore %{INT:datastoreid:int}
+OPENNEBULA_ONED_GENERIC_VM \[VM %{INT:vmid:int}\].*?\[%{WORD:onelevel}\]: .*?
 
 
 OPENNEBULA_MSG (?:%{OPENNEBULA_ONED_MONITOR_VM}|%{OPENNEBULA_ONED_VM_STATUS}|%{OPENNEBULA_ONED_MONITOR_HYP}|%{OPENNEBULA_SCHED_STATUS}|%{OPENNEBULA_ONED_GENERIC_VM})
