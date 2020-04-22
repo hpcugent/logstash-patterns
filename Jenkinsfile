@@ -9,8 +9,8 @@ node {
     }
 
     stage('SEtup virtualenv') {
-        sh 'pip3 install virtualenv'
-        sh 'venv venv'
+        sh 'pip3 install --ignore-installed virtualenv'
+        sh 'virtualenv venv'
         env.PATH = "${pwd()}/venv/bin:${env.PATH}"
     }
 
