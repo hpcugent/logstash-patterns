@@ -1,6 +1,5 @@
 #!/usr/bin/env groovy
 
-def VIRTUALENV_VERSION = "20.0.18"
 def LOGSTASH_VERSION = "7.6.2"
 
 node {
