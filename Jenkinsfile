@@ -10,9 +10,8 @@ node {
     }
 
     stage('Setup virtualenv') {
-        sh "wget -q -O virtualenv-${VIRTUALENV_VERSION}.tar.gz https://github.com/pypa/virtualenv/archive/${VIRTUALENV_VERSION}.tar.gz"
-        sh "tar -xzf virtualenv-${VIRTUALENV_VERSION}.tar.gz"
-        sh "python virtualenv-${VIRTUALENV_VERSION}/virtualenv.py venv"
+        pip3 install virtualenv
+        virtualenv venv
         env.PATH = "${pwd()}/venv/bin:${env.PATH}"
     }
 
