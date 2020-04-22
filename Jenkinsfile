@@ -16,6 +16,7 @@ node {
 
     stage('build') {
         sh "pip install --user vsc-base"
+        sh "pip install --user vsc-utils"
         sh "wget -q https://artifacts.elastic.co/downloads/logstash/logstash-${LOGSTASH_VERSION}.tar.gz"
         sh "tar -xzf logstash-${LOGSTASH_VERSION}.tar.gz"
         env.PATH = "${pwd()}/logstash-${LOGSTASH_VERSION}/bin:${env.PATH}"
