@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
-def VIRTUALENV_VERSION = "15.0.3"
-def LOGSTASH_VERSION = "2.3.4"
+def VIRTUALENV_VERSION = "20.0.18"
+def LOGSTASH_VERSION = "7.6.2"
 
 node {
     stage('Checkout') {
