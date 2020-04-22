@@ -64,7 +64,7 @@ _log = None
 
 GROK_CONFIG_DIR = '/tmp/logpatterns-groktest'
 
-DEFAULT_LOGSTASH_VERSION = '2.0.0'
+DEFAULT_LOGSTASH_VERSION = '7.6.2'
 
 # missing configfile value to -f
 LOGSTASH_CMD = [
@@ -79,7 +79,7 @@ def prep_grok():
     """Prepare the environment"""
     try:
         shutil.rmtree(GROK_CONFIG_DIR)
-    except:
+    except Exception:
         pass
     shutil.copytree(os.path.join(os.path.dirname(os.getcwd()), 'files'), GROK_CONFIG_DIR)
 
@@ -115,7 +115,7 @@ def process(stdout, expected_size):
             continue
         try:
             res = json.loads(line)
-        except:
+        except Exception:
             if not warning.search(line):
                 _log.error("Can't load line as json: %s." % line)
                 sys.exit(1)
@@ -193,7 +193,7 @@ def main(indices, cfg_file):
         try:
             input = [input[idx] for idx in indices]
             results = [results[idx] for idx in indices]
-        except IndexError, e:
+        except IndexError as e:
             _log.error('Provided indices %s exceed avail data items %s' % (indices, len(input)))
             sys.exit(1)
 
