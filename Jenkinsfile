@@ -23,6 +23,7 @@ node {
     }
 
     stage('test') {
-        sh "cd tests && python3 runtest.py"
+        sh 'pip3 install --ignore-installed --user tox'
+        sh 'export PATH=$HOME/.local/bin:$PATH && tox -v -c tox.ini'
     }
 }
