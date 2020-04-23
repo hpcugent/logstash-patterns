@@ -69,9 +69,9 @@ DEFAULT_LOGSTASH_VERSION = '7.6.2'
 # missing configfile value to -f
 LOGSTASH_CMD = [
     'logstash',
-    'agent',
-    '-p', os.path.dirname(os.getcwd()),  # filters in subdir logstash of this directory
+    '-p', os.getcwd(),  # filters in subdir logstash of this directory
 #    '--debug',
+    '--log.level=error',
     '-f'
 ]
 
@@ -81,17 +81,17 @@ def prep_grok():
         shutil.rmtree(GROK_CONFIG_DIR)
     except Exception:
         pass
-    shutil.copytree(os.path.join(os.path.dirname(os.getcwd()), 'files'), GROK_CONFIG_DIR)
+    shutil.copytree(os.path.join(os.getcwd(), 'files'), GROK_CONFIG_DIR)
 
 
 def get_data(directory='data', globpattern='*'):
     """Read the input data"""
-    datafiles = glob.glob("%s/%s" % (directory, globpattern))
+    datafiles = glob.glob("tests/%s/%s" % (directory, globpattern))
     datafiles.sort()
     input = []
     results = []
     for fn in datafiles:
-        execfile(fn)
+        exec(open(fn).read())
         if 'data' in locals():
             _log.debug('Data found in datafile %s' % fn)
             for test in locals().pop('data'):
@@ -104,9 +104,8 @@ def get_data(directory='data', globpattern='*'):
 
 def process(stdout, expected_size):
     """Take in stdout, return list of dicts that are created via loading the json output"""
-    ignore = re.compile(r'(:message=>)')
+    ignore = re.compile(r'((:message=>)|Sending Logstash logs to)')
     output = []
-    lines = []
     warning = re.compile("warning:")
     for line in stdout.split("\n"):
         if not line.strip():
@@ -133,6 +132,7 @@ def process(stdout, expected_size):
 def test(output, input, results):
     """Perform the tests"""
     # zip(output, input, results), but need to check if output is in same order as input/results
+    _log.error("Got output: %s", output)
     sorted_zip = []
     for idx, out_line in enumerate(output):
         out = out_line[0]
@@ -193,12 +193,13 @@ def main(indices, cfg_file):
         try:
             input = [input[idx] for idx in indices]
             results = [results[idx] for idx in indices]
-        except IndexError as e:
+        except IndexError:
             _log.error('Provided indices %s exceed avail data items %s' % (indices, len(input)))
             sys.exit(1)
 
     ec, stdout = run_asyncloop(cmd=LOGSTASH_CMD+[cfg_file], input="\n".join(input + ['']))
 
+    _log.error("async process ec: %d", ec)
     output = process(stdout, len(input))
     test(output, input, results)
 
@@ -222,10 +223,11 @@ if __name__ == '__main__':
 
 
     cfg_name = 'logstash_%s.conf' % go.options.logstash_version
-    cfg_file = os.path.join(os.path.dirname(os.getcwd()), 'tests', cfg_name)
+    cfg_file = os.path.join(os.getcwd(), 'tests', cfg_name)
 
     if not os.path.isfile(cfg_file):
         _log.error("Could not find logstash version %s configfile %s" % (go.options.logstash_version, cfg_file))
+        _log.error("CWD: %s", os.getcwd())
         sys.exit(1)
 
     main(indices, cfg_file)
