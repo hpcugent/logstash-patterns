@@ -83,7 +83,7 @@ def prep_grok():
     shutil.copytree(os.path.join(os.getcwd(), 'files'), GROK_CONFIG_DIR)
 
 
-def get_data(directory='data', globpattern='*'):
+def get_data(directory='data', globpattern='*[!~]'):
     """Read the input data"""
     datafiles = glob.glob("tests/%s/%s" % (directory, globpattern))
     datafiles.sort()
