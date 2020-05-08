@@ -5,24 +5,18 @@ def LOGSTASH_VERSION = "7.6.2"
 node {
     stage('checkout git') {
         checkout scm
-        sh "git clean -fxd"
+        // remove untracked files (*.pyc for example)
+        sh 'git clean -fxd'
     }
 
-    stage('SEtup virtualenv') {
-        sh 'pip3 install --ignore-installed --user virtualenv'
-        sh 'export PATH=$HOME/.local/bin:$PATH virtualenv venv'
-        env.PATH = "${pwd()}/venv/bin:${env.PATH}"
-    }
-
-    stage('build') {
-        sh "pip install --user vsc-base"
-        sh "pip install --user vsc-utils"
-        sh "wget -q https://artifacts.elastic.co/downloads/logstash/logstash-${LOGSTASH_VERSION}.tar.gz"
+    stage('install logstash') {
+        sh "wget -nv https://artifacts.elastic.co/downloads/logstash/logstash-${LOGSTASH_VERSION}.tar.gz"
         sh "tar -xzf logstash-${LOGSTASH_VERSION}.tar.gz"
         env.PATH = "${pwd()}/logstash-${LOGSTASH_VERSION}/bin:${env.PATH}"
     }
 
     stage('test') {
+        sh 'python2.7 -V'
         sh 'pip3 install --ignore-installed --user tox'
         sh 'export PATH=$HOME/.local/bin:$PATH && tox -v -c tox.ini'
     }
