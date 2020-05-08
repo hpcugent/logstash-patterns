@@ -24,18 +24,6 @@
 # You should have received a copy of the GNU General Public License
 # along with logstash-patterns. If not, see <http://www.gnu.org/licenses/>.
 #
-
-import glob
-import json
-import os
-import pprint
-import re
-import shutil
-import sys
-from unittest.case import TestCase
-from vsc.utils.run import run_asyncloop
-from vsc.utils.generaloption import simple_option
-
 """
 Test the grok patterns for logstash usage.
 
@@ -50,15 +38,26 @@ the "expected" dictionary.
 The raw message is what is being sent to logstash
 (and typically what kibana shows as message).
 
+To run:
+version 2.0.0 (or later)
+download zip release from https://download.elastic.co/logstash/logstash/logstash-2.0.0.zip
+unpack in e.g. ~/logstash dir
+run tests with
+PATH=~/logstash/logstash-2.0.0/bin:$PATH ./runtest.py
+
 @author: Stijn De Weirdt (Ghent University)
 """
 
-# version 2.0.0 (or later)
-# download zip release from https://download.elastic.co/logstash/logstash/logstash-2.0.0.zip
-# unpack in e.g. ~/logstash dir
-# run tests with
-# PATH=~/logstash/logstash-2.0.0/bin:$PATH ./runtest.py
-
+import glob
+import json
+import os
+import pprint
+import re
+import shutil
+import sys
+from unittest.case import TestCase
+from vsc.utils.run import asyncloop
+from vsc.utils.generaloption import simple_option
 
 _log = None
 
@@ -70,10 +69,10 @@ DEFAULT_LOGSTASH_VERSION = '7.6.2'
 LOGSTASH_CMD = [
     'logstash',
     '-p', os.getcwd(),  # filters in subdir logstash of this directory
-#    '--debug',
     '--log.level=error',
-    '-f'
+    '-f',
 ]
+
 
 def prep_grok():
     """Prepare the environment"""
@@ -88,25 +87,25 @@ def get_data(directory='data', globpattern='*'):
     """Read the input data"""
     datafiles = glob.glob("tests/%s/%s" % (directory, globpattern))
     datafiles.sort()
-    input = []
+    input_data = []
     results = []
     for fn in datafiles:
         exec(open(fn).read())
         if 'data' in locals():
-            _log.debug('Data found in datafile %s' % fn)
-            for test in locals().pop('data'):
-                input.append(test['raw'])
-                results.append(test.get('expected', None))
+            _log.debug('Data found in datafile %s', fn)
+            for test_data in locals().pop('data'):
+                input_data.append(test_data['raw'])
+                results.append(test_data.get('expected', None))
         else:
-            _log.debug('No data found in datafile %s' % fn)
-    return input, results
+            _log.debug('No data found in datafile %s', fn)
+    return input_data, results
 
 
 def process(stdout, expected_size):
     """Take in stdout, return list of dicts that are created via loading the json output"""
-    ignore = re.compile(r'((:message=>)|Sending Logstash logs to)')
+    ignore = re.compile(r'((:message=>)|Sending Logstash logs to|Thread.exclusive is deprecated)')
     output = []
-    warning = re.compile("warning:")
+    warning = re.compile(r"(warning:|Sending Logstash('s)? logs to|\[WARN \]|\[INFO \])")
     for line in stdout.split("\n"):
         if not line.strip():
             continue
@@ -116,48 +115,47 @@ def process(stdout, expected_size):
             res = json.loads(line)
         except Exception:
             if not warning.search(line):
-                _log.error("Can't load line as json: %s." % line)
+                _log.error("Can't load line as json: %s.", line)
                 sys.exit(1)
         else:
             output.append((res, line))
 
     if len(output) != expected_size:
-        _log.error("outputs size %s not expected size %s: (%s)" % (len(output), expected_size, output))
+        _log.error("outputs size %s not expected size %s: (%s)", len(output), expected_size, output)
         sys.exit(1)
 
-    _log.debug("Returning processed output list %s" % output)
+    _log.debug("Returning processed output list %s", output)
     return output
 
 
-def test(output, input, results):
+def test(output, input_data, results):
     """Perform the tests"""
-    # zip(output, input, results), but need to check if output is in same order as input/results
-    _log.error("Got output: %s", output)
+    # zip(output, input_data, results), but need to check if output is in same order as input/results
     sorted_zip = []
     for idx, out_line in enumerate(output):
         out = out_line[0]
         line = out_line[1]
         msg = out.get('message', None)
         if msg is None:
-            _log.error("message field missing from out idx %s: %s" % (idx, out))
+            _log.error("message field missing from out idx %s: %s", idx, out)
             sys.exit(1)
-        if msg in input:
-            inp_idx = input.index(msg)
-            sorted_zip.append((out, line, input.pop(inp_idx), results.pop(inp_idx)))
+        if msg in input_data:
+            inp_idx = input_data.index(msg)
+            sorted_zip.append((out, line, input_data.pop(inp_idx), results.pop(inp_idx)))
         else:
-            _log.error("output message field missing from input: msg %s" % (msg))
-            _log.debug("output message field missing from input: msg %s input %s" % (msg, input))
+            _log.error("output message field missing from input: msg %s", msg)
+            _log.debug("output message field missing from input: msg %s input %s", msg, input_data)
             sys.exit(1)
 
     counter = [0, 0]
     for out, line, inp, res in sorted_zip:
         if res is None:
-            _log.error("Input %s converted in out %s" % (inp, pprint.pformat(output)))
+            _log.error("Input %s converted in out %s", inp, pprint.pformat(output))
             sys.exit(2)
 
-        _log.debug("Input: %s" % inp)
-        _log.debug("Expected Results: %s" % res)
-        _log.debug("Output: %s" % out)
+        _log.debug("Input: %s", inp)
+        _log.debug("Expected Results: %s", res)
+        _log.debug("Output: %s", out)
 
         counter[0] += 1
         t = TestCase('assertEqual')
@@ -165,45 +163,23 @@ def test(output, input, results):
         for k, v in res.items():
             counter[1] += 1
 
-            if not unicode(k) in out:
-                _log.error("key %s missing from output \n%s\n for inp \n%s" % (k, pprint.pformat(out), inp))
+            if str(k) not in out:
+                _log.error("key %s missing from output \n%s\n for inp \n%s", k, pprint.pformat(out), inp)
                 sys.exit(1)
 
-            res_out = out[unicode(k)]
+            res_out = out[str(k)]
             try:
                 t.assertEqual(res_out, v)
             except AssertionError:
-                tmpl = "key %s value %s (type %s), expected %s (type %s)"
-                _log.error(tmpl % (k, res_out, type(res_out), v, type(v)))
-                _log.debug("Full out %s from line %s" % (pprint.pformat(out), line))
+                _log.error("key %s value %s (type %s), expected %s (type %s)", k, res_out, type(res_out), v, type(v))
+                _log.debug("Full out %s from line %s", pprint.pformat(out), line)
                 sys.exit(1)
 
-    _log.info("Verified %s lines with %s subtests. All OK" % (counter[0], counter[1]))
+    _log.info("Verified %s lines with %s subtests. All OK", counter[0], counter[1])
 
 
-def main(indices, cfg_file):
+def main():
     """The main, only test the indices passed"""
-    prep_grok()
-    input, results = get_data()
-    if indices:
-        for indx in indices:
-            _log.debug("Test index %d => input: %s" % (indx, input[indx]))
-            _log.debug("Test index %d => results: %s" % (indx, results[indx]))
-
-        try:
-            input = [input[idx] for idx in indices]
-            results = [results[idx] for idx in indices]
-        except IndexError:
-            _log.error('Provided indices %s exceed avail data items %s' % (indices, len(input)))
-            sys.exit(1)
-
-    ec, stdout = run_asyncloop(cmd=LOGSTASH_CMD+[cfg_file], input="\n".join(input + ['']))
-
-    _log.error("async process ec: %d", ec)
-    output = process(stdout, len(input))
-    test(output, input, results)
-
-if __name__ == '__main__':
     opts = {
         "last": ("Only test last data entry", None, "store_true", False, 'L'),
         "first": ("Only test first data entry", None, "store_true", False, 'F'),
@@ -219,15 +195,37 @@ if __name__ == '__main__':
     elif go.options.entries:
         indices = [int(x) for x in go.options.entries]
 
+    global _log
     _log = go.log
-
 
     cfg_name = 'logstash_%s.conf' % go.options.logstash_version
     cfg_file = os.path.join(os.getcwd(), 'tests', cfg_name)
 
     if not os.path.isfile(cfg_file):
-        _log.error("Could not find logstash version %s configfile %s" % (go.options.logstash_version, cfg_file))
+        _log.error("Could not find logstash version %s configfile %s", go.options.logstash_version, cfg_file)
         _log.error("CWD: %s", os.getcwd())
         sys.exit(1)
 
-    main(indices, cfg_file)
+    prep_grok()
+    input_data, results = get_data()
+    if indices:
+        for indx in indices:
+            _log.debug("Test index %d => input: %s", indx, input_data[indx])
+            _log.debug("Test index %d => results: %s", indx, results[indx])
+
+        try:
+            input_data = [input_data[idx] for idx in indices]
+            results = [results[idx] for idx in indices]
+        except IndexError:
+            _log.error('Provided indices %s exceed avail data items %s', indices, len(input_data))
+            sys.exit(1)
+
+    ec, stdout = asyncloop(cmd=LOGSTASH_CMD + [cfg_file], input="\n".join(input_data + ['']))
+
+    _log.debug("async process ec: %d", ec)
+    output = process(stdout, len(input_data))
+    test(output, input_data, results)
+
+
+if __name__ == '__main__':
+    main()
