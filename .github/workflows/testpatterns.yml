@@ -1,0 +1,32 @@
+name: test logstash patterns
+on: [push, pull_request]
+
+jobs:
+  test_patterns:
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          python-version: [2.7, 3.6]
+      steps:
+      - name: add logstash repo
+        uses: myci-actions/add-deb-repo@4
+        with:
+            repo: deb https://artifacts.elastic.co/packages/7.x/apt stable main
+            repo-name: elastic-7.x
+            keys: D27D666CD88E42B4
+      - name: install logstash
+        run: sudo apt-get install logstash
+      - name: add logstash to path
+        run: echo "/usr/share/logstash/bin" >> $GITHUB_PATH
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install tox tox-gh-actions
+      - name: run tests
+        run: tox -v -c tox.ini
