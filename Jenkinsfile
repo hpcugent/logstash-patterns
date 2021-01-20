@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def LOGSTASH_VERSION = "7.6.2"
+def LOGSTASH_VERSION = "7.10.2"
 
 node {
     stage('checkout git') {
@@ -10,8 +10,8 @@ node {
     }
 
     stage('install logstash') {
-        sh "wget -nv https://artifacts.elastic.co/downloads/logstash/logstash-${LOGSTASH_VERSION}.tar.gz"
-        sh "tar -xzf logstash-${LOGSTASH_VERSION}.tar.gz"
+        sh "wget -nv https://artifacts.elastic.co/downloads/logstash/logstash-${LOGSTASH_VERSION}-linux-x86_64.tar.gz"
+        sh "tar -xzf logstash-${LOGSTASH_VERSION}-linux-x86_64.tar.gz"
         env.PATH = "${pwd()}/logstash-${LOGSTASH_VERSION}/bin:${env.PATH}"
     }
 
