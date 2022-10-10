@@ -1,5 +1,5 @@
-LMOD_GENERAL (?:- lmod::)\s*username=%{USERNAME_PAT}, cluster=%{DATA:cluster}, jobid=%{DATA:jobid}
+LMOD_GENERAL (?:- lmod::)\s*username=%{USERNAME_PAT:[lmod][info][username]}, cluster=%{DATA:[lmod][info][cluster]}, jobid=%{DATA:[lmod][info][jobid]}
 LMOD_USERLOAD (?:yes|no)
-LMOD_LOAD userload=%{LMOD_USERLOAD:userload}, module=%{DATA:module_name}/%{DATA:module_version}, fn=%{GREEDYDATA:module_path}
-LMOD_CMD cmd=%{DATA:command}, args=%{GREEDYDATA:arguments}
+LMOD_LOAD userload=%{LMOD_USERLOAD:[lmod][userload]}, module=%{DATA:[lmod][module][name]}/%{DATA:[lmod][module][version]}, fn=%{GREEDYDATA:[lmod][filename]}
+LMOD_CMD cmd=%{DATA:[lmod][command]}, args=%{GREEDYDATA:[lmod][arguments]}
 LMOD_MSG %{LMOD_GENERAL}, (?:%{LMOD_LOAD}|%{LMOD_CMD})
