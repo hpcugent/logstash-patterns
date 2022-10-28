@@ -1,0 +1,5 @@
+{
+  "QUATTOR_MSG": "(?:%{QUATTOR_NCD_START}|%{QUATTOR_NCD_FINISH})",
+  "QUATTOR_NCD_FINISH": ".*?%{INT:quattor.ncderrors} errors\\, %{INT:quattor.ncdwarnings} warnings executing configure",
+  "QUATTOR_NCD_START": ".*?version %{DATA:quattor.ncdversion} started.*?"
+}

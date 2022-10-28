@@ -1,0 +1,5 @@
+{
+  "NFS_GENERAL": ".*? nfs: server %{IPORHOST:nfs.server} %{DATA:nfs.reason}$",
+  "NFS_MSG": "(?:%{NFS_GENERAL}|%{NFS_NFS4_GENERAL})",
+  "NFS_NFS4_GENERAL": ".*?: (?<nfsreason>[^:]*) on NFSv4 server %{IPORHOST:nfs.server}"
+}
