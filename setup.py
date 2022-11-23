@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: latin-1 -*-
 #
-# Copyright 2009-2016 Ghent University
+# Copyright 2009-2022 Ghent University
 #
 # This file is part of logstash-patterns,
 # originally created by the HPC team of Ghent University (http://ugent.be/hpc/en),
@@ -33,8 +33,8 @@ import glob
 
 setup(name="logstash-patterns",
       version="2.0.0",
-      description="Grok patterns for logstash",
-      long_description="""Grok patterns for parsing log messages with logstash.
+      description="Grok patterns for vector (JSON formatted)",
+      long_description="""Grok patterns for parsing log messages with vector.
 
 Can be debugged on https://grokdebug.herokuapp.com/ or via the runtest.py in tests subdirectory
 """,
@@ -42,7 +42,5 @@ Can be debugged on https://grokdebug.herokuapp.com/ or via the runtest.py in tes
       author="HPC UGent",
       author_email="hpc-admin@lists.ugent.be",
       # keep MANIFEST.in in sync (EL6 packaging issue)
-      data_files=[("/usr/share/grok", glob.glob("files/*")),
-                  ("/usr/share/logstash/filters", glob.glob("logstash/filters/*")),
-                  ],
+      data_files=[("/usr/share/vector", glob.glob("files/*"))],
       url="http://www.ugent.be/hpc")
