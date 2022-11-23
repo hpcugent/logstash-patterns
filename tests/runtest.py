@@ -103,7 +103,9 @@ def get_data(directory='data', globpattern='*[!~]'):
 
 def process(stdout, expected_size):
     """Take in stdout, return list of dicts that are created via loading the json output"""
-    ignore = re.compile(r'((:message=>)|Sending Logstash logs to|Thread.exclusive is deprecated)')
+    ignore_patterns = ["(:message=>)", "Sending Logstash logs to", "Thread.exclusive is deprecated",
+                       "^Using bundled JDK", "^WARNING", "^Could not find log4j2 configuration"]
+    ignore = re.compile('(' + '|'.join(ignore_patterns) + ')')
     output = []
     warning = re.compile(r"(warning:|Sending Logstash('s)? logs to|\[WARN \]|\[INFO \])")
     for line in stdout.split("\n"):
