@@ -1,0 +1,4 @@
+{
+  "MODULECMD_MSG": "(?:- modulecmd::  )?U%{USERNAME_PAT} H%{DATA:modulecmd.host} VC%{DATA:modulecmd.cluster} VAL%{DATA:modlecmd.architecture} ID%{DATA:modulecmd.jobid} %{DATA:modulecmd.shell}_%{DATA:modulecmd.cmd}_%{MODULE_NAME_AND_OR_VERSION}",
+  "MODULE_NAME_AND_OR_VERSION": "(?:%{DATA:modulecmd.name}@%{GREEDYDATA:modulecmd.version}|%{GREEDYDATA:modulecmd.data})"
+}

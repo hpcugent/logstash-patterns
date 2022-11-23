@@ -1,2 +1,0 @@
-OP (?:[^;]*)
-PBS_LOG %{DATESTAMP:timestamp};%{NONNEGINT}(?:d)?;PBS_Server(?:\.%{NONNEGINT})?;%{OP:opcode};%{OP:method};%{GREEDYDATA:txt}

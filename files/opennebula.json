@@ -1,0 +1,8 @@
+{
+  "OPENNEBULA_MSG": "(?:%{OPENNEBULA_ONED_MONITOR_VM}|%{OPENNEBULA_ONED_VM_STATUS}|%{OPENNEBULA_ONED_MONITOR_HYP}|%{OPENNEBULA_SCHED_STATUS}|%{OPENNEBULA_ONED_GENERIC_VM})",
+  "OPENNEBULA_ONED_GENERIC_VM": "\\[VM %{INT:one.vm.vmid}\\].*?\\[%{WORD:one.vm.level}\\]: .*?",
+  "OPENNEBULA_ONED_MONITOR_HYP": ".*?\\[%{WORD:one.mon.level}\\]: .*? monitoring Host %{WORD:one.mon.hypervisor} \\(%{INT:one.mon.hostid}\\)",
+  "OPENNEBULA_ONED_MONITOR_VM": ".*?\\[%{WORD:one.mon.level}\\]: VM %{INT:one.mon.vmid} .*?: STATE\\=%{WORD:one.mon.vmstate} CPU\\=%{NUMBER:one.mon.vmucpu} MEMORY\\=%{INT:one.mon.vmmem} NETRX\\=%{INT:one.mon.vmnetrx} NETTX\\=%{INT:one.mon.vmnettx} .*?",
+  "OPENNEBULA_ONED_VM_STATUS": "\\[VM %{INT:one.vm.status.vmid}\\].*?\\[%{WORD:one.vm.status.level}\\]: .*? state is %{WORD:one.vm.status.vmstate}",
+  "OPENNEBULA_SCHED_STATUS": ".*?\\[%{WORD:one.sched.status.level}\\]: .*? VM %{INT:one.sched.status.vmid} .*? host %{INT:one.sched.status.hostid} .*? datastore %{INT:one.sched.status.datastoreid}"
+}

@@ -1,0 +1,13 @@
+{
+  "SSH_AUTH_REFUSED": ".*?Authentication refused: bad ownership or modes for file %{PATH:ssh.ownerpath}",
+  "SSH_DISCONNECT": ".*?Received disconnect from %{IPORHOST:ssh.ip}: %{NONNEGINT}: (?<reason>disconnected by user)$",
+  "SSH_INPUT_USERAUTH": ".*?input_userauth_request: (?<inputuserauth>invalid user %{USERNAME_PAT:ssh.username})",
+  "SSH_INVALID_USER": "Invalid user",
+  "SSH_MESSAGE_CONNECTION": "%{SSH_STATUS:status}",
+  "SSH_MESSAGE_INVALID": "%{SSH_INVALID_USER:status} %{USERNAME_PAT} from %{IP}",
+  "SSH_MSG": "(?:%{SSH_VALID_INVALID}|%{SSH_PAM_SESSION}|%{SSH_DISCONNECT}|%{SSH_SUBSYSTEM}|%{SSH_INPUT_USERAUTH}|%{SSH_AUTH_REFUSED})",
+  "SSH_PAM_SESSION": ".*?pam_unix\\(sshd:session\\): session %{WORD:ssh.session} for user %{USERNAME_PAT}:ssh.username",
+  "SSH_STATUS": "(?:Accepted|Failed)",
+  "SSH_SUBSYSTEM": ".*?subsystem request for (?<ssh.subsystem>.*)",
+  "SSH_VALID_INVALID": ".*?(?<status>Accepted|Failed|Invalid user)(?: %{WORD:ssh.method} for)? %{USERNAME_PAT:ssh.username} from %{IPORHOST:ssh.op}(?: port %{NONNEGINT:ssh.port})?"
+}

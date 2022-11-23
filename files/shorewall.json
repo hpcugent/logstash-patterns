@@ -1,0 +1,6 @@
+{
+  "SHOREWALL_ICMP": ".*?%{WORD:shorewall.icmp.fwrule}\\:%{WORD:shorewall.icmp.fwtarget}\\:IN\\=%{WORD:shorewall.icmp.fwin} OUT\\=%{WORD:shorewall.icmp.fwout} SRC\\=%{IPORHOST:shorewall.icmp.fwsrc} DST\\=%{IPORHOST:shorewall.icmp.fwdst} .*? PROTO\\=%{WORD:shorewall.icmp.fwproto} .*?",
+  "SHOREWALL_MSG": "(?:%{SHOREWALL_TCP}|%{SHOREWALL_UDP}|%{SHOREWALL_ICMP})",
+  "SHOREWALL_TCP": ".*?%{WORD:shorewall.tcp.fwrule}\\:%{WORD:shorewall.tcp.wtarget}\\:IN\\=%{WORD:shorewall.tcp.win} OUT\\=\\s*MAC\\=%{DATA:shorewall.tcp.fwmac} SRC\\=%{IPORHOST:shorewall.tcp.fwsrc} DST\\=%{IPORHOST:shorewall.tcp.fwdst} .*? PROTO\\=%{WORD:shorewall.tcp.fwproto} SPT\\=%{INT:shorewall.tcp.fwspt} DPT\\=%{INT:shorewall.tcp.fwdpt} .*?",
+  "SHOREWALL_UDP": ".*?%{WORD:shorewall.udp.fwrule}\\:%{WORD:shorewall.udp.fwtarget}\\:IN\\=%{WORD:shorewall.udp.fwin} OUT\\=%{WORD:shorewall.udp.fwout}.*?SRC\\=%{IPORHOST:shorewall.udp.fwsrc} DST\\=%{IPORHOST:shorewall.udp.fwdst} .*? PROTO\\=%{WORD:shorewall.udp.fwproto} SPT\\=%{INT:shorewall.udp.fwspt} DPT\\=%{INT:shorewall.udp.fwdpt} .*?"
+}

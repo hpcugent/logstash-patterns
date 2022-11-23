@@ -1,0 +1,8 @@
+{
+  "ICINGA_CLASS": "([^:]*?):",
+  "ICINGA_FIELD": "([^;]+)",
+  "ICINGA_HOST": "([-\\w.]+)",
+  "ICINGA_HOST_BODY": "%{ICINGA_FIELD:icinga.host.status};%{ICINGA_FIELD:icinga.host.status_type};%{INT:icinga.host.count};%{GREEDYDATA:icinga.host.check_output}",
+  "ICINGA_MSG": "\\[%{NONNEGINT:icinga.timestamp}\\]%{SPACE}%{ICINGA_CLASS:icinga.class}%{SPACE}%{ICINGA_HOST:icinga.host};(?:%{ICINGA_SERVICE_BODY}|%{ICINGA_HOST_BODY})",
+  "ICINGA_SERVICE_BODY": "%{ICINGA_FIELD:icinga.service.check};%{ICINGA_FIELD:icinga.service.status};%{ICINGA_FIELD:icinga.service.status_type};%{INT:icinga.service.count};%{GREEDYDATA:icinga.service.check_output}"
+}

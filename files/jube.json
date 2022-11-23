@@ -1,0 +1,6 @@
+{
+  "EXEC_HOST": "[-a-zA-Z0-9/+.,]+",
+  "JOB_INPUT": "[-a-zA-Z0-9/._]+",
+  "MODULE_NAME": "[-a-zA-Z0-9/.]+",
+  "REALWORD": "[\\w-]+"
+}

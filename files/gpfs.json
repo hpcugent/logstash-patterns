@@ -1,0 +1,5 @@
+{
+  "GPFSDATA": "%{GREEDYDATA}",
+  "GPFSDATE": "%{DAY}%{SPACE}%{MONTH}%{SPACE}%{MONTHDAY}%{SPACE}%{TIME}%{SPACE}%{YEAR}",
+  "GPFSLOG": "%{GPFSDATE:gpfs.timestamp}:%{SPACE}%{GPFSDATA:gpfs.realmsg}"
+}
