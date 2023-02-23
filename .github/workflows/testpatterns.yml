@@ -6,7 +6,7 @@ jobs:
       runs-on: ubuntu-latest
       strategy:
         matrix:
-          python-version: [2.7, 3.6]
+          python-version: 3.6
       steps:
       - name: add logstash repo
         uses: myci-actions/add-deb-repo@4
@@ -19,14 +19,15 @@ jobs:
       - name: add logstash to path
         run: echo "/usr/share/logstash/bin" >> $GITHUB_PATH
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install tox tox-gh-actions
+          pip install tox
+          git remote add hpcugent https://github.com/hpcugent/vsc-install.git
       - name: run tests
         run: tox -v -c tox.ini
