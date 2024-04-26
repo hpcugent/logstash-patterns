@@ -1,0 +1,44 @@
+data_dir = "/tmp/grok"
+
+[sources.stdin]
+type = "stdin"
+
+[sinks.console]
+type = "console"
+encoding.codec = "json"
+inputs = ["syslog"]
+
+[transforms.syslog]
+inputs = ["stdin"]
+type = "remap"
+source = """
+. |= parse_syslog!(.message)
+structured = parse_groks(
+  .message,
+  [ "%{LMOD:lmod}", 
+    "%{SSH_MSG:ssh}", 
+    "%{MODULECMD_MSG:modulecmd}",
+    "%{NFS_MSG:nfs}", 
+    "%{OPENNEBULA_MSG:one}", 
+    "%{QUATTOR_MSG:quattor}", 
+    "%{SNOOPY_MSG:snoopy}"
+  ],
+  alias_sources: [
+    "/tmp/grok/gpfs.json",
+    "/tmp/grok/icinga.json",
+    "/tmp/grok/lmod.json",
+    "/tmp/grok/modulecmd.json",
+    "/tmp/grok/nfs.json",
+    "/tmp/grok/opennebula.json",
+    "/tmp/grok/quattor.json",
+    "/tmp/grok/shorewall.json",
+    "/tmp/grok/snoopy.json",
+    "/tmp/grok/ssh.json",
+    "/tmp/grok/hpc-ugent-patterns.json",
+  ]
+) ?? { 
+    "message": .message,
+    "grokparsefailure": true 
+  }
+. = merge(., structured)
+"""
