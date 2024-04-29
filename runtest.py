@@ -84,7 +84,6 @@ def main():
 
     # filter out vector.toml
     tests = filter(lambda s: not s.endswith("vector.toml"), tests)
-    logging.info("Hahaha")
 
     for test in tests:
         print(f"Running test {test}")

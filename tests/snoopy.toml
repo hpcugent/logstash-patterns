@@ -1,0 +1,23 @@
+[[tests]]
+name = "Test snoopy grok pattern 1"
+
+[[tests.inputs]]
+insert_at = "syslog"
+type = "log"
+
+[tests.inputs.log_fields]
+message = "Apr 26 09:00:55 master2 snoopy[1301]: [uid:110 sid:8322 tty: cwd:/ filename:/bin/cut]: cut -d ; -f 4 "
+
+[[tests.outputs]]
+extract_from = "syslog"
+
+[[tests.outputs.conditions]]
+type = "vrl"
+source = '''
+assert!(is_string(.message))
+assert_eq!(.snoopy.uid, "110")
+assert_eq!(.snoopy.executable, "/bin/cut")
+assert_eq!(.snoopy.cwd, "/")
+assert_eq!(.snoopy.command, "cut -d ; -f 4")
+'''
+

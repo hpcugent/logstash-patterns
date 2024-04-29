@@ -19,6 +19,6 @@ assert_eq!(.lmod.username, "vsc43614")
 assert!(is_string(.lmod.module.filename))
 assert_eq!(.lmod.module.name, "intel-compilers")
 assert_eq!(.lmod.module.version, "2021.4.0")
-assert!(is_string(.lmod.cluster))
-assert!(is_string(.lmod.jobid))
+assert_eq!(.lmod.cluster, "swalot")
+assert_eq!(.lmod.jobid, "35121297[22]")
 '''
