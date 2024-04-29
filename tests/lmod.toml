@@ -15,9 +15,10 @@ extract_from = "syslog"
 type = "vrl"
 source = '''
 assert!(is_string(.message))
-assert!(is_string(.lmod.username))
+assert_eq!(.lmod.username, "vsc43614")
 assert!(is_string(.lmod.module.filename))
-assert!(is_string(.lmod.module.name))
+assert_eq!(.lmod.module.name, "intel-compilers")
+assert_eq!(.lmod.module.version, "2021.4.0")
 assert!(is_string(.lmod.cluster))
 assert!(is_string(.lmod.jobid))
 '''
