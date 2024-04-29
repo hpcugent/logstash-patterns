@@ -27,16 +27,11 @@
 
 import argparse
 import glob
-import json
 import logging
 import os
-import pprint
-import re
 import shutil
 import sys
-from unittest.case import TestCase
 from vsc.utils.run import run_asyncloop
-from vsc.utils.generaloption import simple_option
 
 """
 Test the grok patterns for vector usage.
