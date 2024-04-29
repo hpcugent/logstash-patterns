@@ -52,7 +52,7 @@ format. Add the expectation in vrl, see e.g., lmod.toml
 # Where we store the grok patterns in JSON format
 GROK_CONFIG_DIR = "/tmp/grok"
 
-VECTOR_COMMAND = ["vector", "test", "tmp/vector.toml"]  # this will be the file with the tests
+VECTOR_COMMAND = ["vector", "test", "tests/vector.toml"]  # this will be the file with the tests
 
 
 def prep_grok():
@@ -62,11 +62,6 @@ def prep_grok():
     except:
         pass
     shutil.copytree(os.path.join(os.getcwd(), "files"), GROK_CONFIG_DIR)
-
-
-def prep_vector():
-    """Get the vector executable"""
-    pass
 
 
 def main():
@@ -87,9 +82,6 @@ def main():
     # copy the grok patterns
     prep_grok()
 
-    # get Vector
-    prep_vector()
-
     if args.names:
         tests = map(lambda s: os.path.join("tests", s.strip()), args.names.split(","))
     else:
@@ -97,8 +89,10 @@ def main():
 
     # filter out vector.toml
     tests = filter(lambda s: not s.endswith("vector.toml"), tests)
+    logging.info("Hahaha")
 
     for test in tests:
+        print(f"Running test {test}")
         ec, stdout = run_asyncloop(cmd=VECTOR_COMMAND + [test])
         if ec != 0:
             logging.error(f"Test {test} failed: {stdout}")
