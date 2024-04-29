@@ -31,16 +31,18 @@ import os
 from distutils.core import setup
 import glob
 
-setup(name="logstash-patterns",
-      version="2.0.0",
-      description="Grok patterns for vector (JSON formatted)",
-      long_description="""Grok patterns for parsing log messages with vector.
+setup(
+    name="logstash-patterns",
+    version="3.0.0",
+    description="Grok patterns for vector (JSON formatted)",
+    long_description="""Grok patterns for parsing log messages with vector.
 
 Can be debugged on https://grokdebug.herokuapp.com/ or via the runtest.py in tests subdirectory
 """,
-      license="LGPL",
-      author="HPC UGent",
-      author_email="hpc-admin@lists.ugent.be",
-      # keep MANIFEST.in in sync (EL6 packaging issue)
-      data_files=[("/usr/share/vector", glob.glob("files/*"))],
-      url="http://www.ugent.be/hpc")
+    license="LGPL",
+    author="HPC UGent",
+    author_email="hpc-admin@lists.ugent.be",
+    # keep MANIFEST.in in sync (EL6 packaging issue)
+    data_files=[("/usr/share/vector", glob.glob("files/*"))],
+    url="http://www.ugent.be/hpc",
+)
