@@ -1,0 +1,24 @@
+[[tests]]
+name = "Test lmod grok patterns"
+
+[[tests.inputs]]
+insert_at = "syslog"
+type = "log"
+
+[tests.inputs.log_fields]
+message = "2023-01-01T20:22:03.886018+01:00 node2630 lmod: username=vsc43614, cluster=swalot, jobid=35121297[22], userload=no, module=intel-compilers/2021.4.0, fn=/apps/gent/RHEL8/haswell-ib/modules/all/intel-compilers/2021.4.0.lua"
+
+[[tests.outputs]]
+extract_from = "syslog"
+
+[[tests.outputs.conditions]]
+type = "vrl"
+source = '''
+assert!(is_string(.message))
+assert_eq!(.lmod.username, "vsc43614")
+assert!(is_string(.lmod.module.filename))
+assert_eq!(.lmod.module.name, "intel-compilers")
+assert_eq!(.lmod.module.version, "2021.4.0")
+assert_eq!(.lmod.cluster, "swalot")
+assert_eq!(.lmod.jobid, "35121297[22]")
+'''

@@ -1,0 +1,18 @@
+{
+  "CEPH_BYTES": "%{NONNEGINT} (?:(?:k|M|G|T|P)?B)",
+  "CEPH_MSG": "%{DATA} (?:%{CEPH_PGMAP}|%{CEPH_SLOW_REQUEST})",
+  "CEPH_PGMAP": ".*? pgmap v(?<pgmapv>[0-9]+): %{NONNEGINT:ceph.pgs} pgs: (?:%{CEPH_PGMAP_DETAIL})(?:; %{CEPH_PGMAP_VOLUME})?(?:; %{CEPH_PGMAP_ACT})?(?:; %{CEPH_PGMAP_OBJ_DEGRADED})?(?:; %{CEPH_PGMAP_OBJ_MISPLACED})?(?:; %{CEPH_PGMAP_OBJ_RECOV})?$",
+  "CEPH_PGMAP_ACT": "(%{CEPH_BYTES:ceph.actread}/s rd, )?(%{CEPH_BYTES:ceph.actwrite}/s wr, )?%{NONNEGINT:ceph.actops} op/s",
+  "CEPH_PGMAP_DETAIL": "(?:%{CEPH_PGMAP_DETAIL_PAT}(?:, %{CEPH_PGMAP_DETAIL_PAT})*)",
+  "CEPH_PGMAP_DETAIL_ACTIVE_CLEAN": "%{NONNEGINT:ceph.active_clean} active\\+clean",
+  "CEPH_PGMAP_DETAIL_PAT": "(?:%{CEPH_PGMAP_DETAIL_ACTIVE_CLEAN}|%{CEPH_PGMAP_DETAIL_REST})",
+  "CEPH_PGMAP_DETAIL_REST": "%{NONNEGINT} (?:[^ ,;]+)",
+  "CEPH_PGMAP_OBJ_DEGRADED": "%{NONNEGINT:ceph.objdegraded}/%{NONNEGINT:ceph.objtotal} objects degraded [^;]*",
+  "CEPH_PGMAP_OBJ_MISPLACED": "%{NONNEGINT:ceph.objmisplaced}/%{NONNEGINT:ceph.objtotal} objects misplaced [^;]*",
+  "CEPH_PGMAP_OBJ_RECOV": "%{CEPH_BYTES:ceph.objrecovthr}/s, %{NONNEGINT:ceph.objrecovhz} objects/s recovering",
+  "CEPH_PGMAP_VOLUME": "%{CEPH_BYTES:ceph.volumedata} data, %{CEPH_BYTES:ceph.volumeused} used, %{CEPH_BYTES:ceph.volumeavail} / %{CEPH_BYTES:ceph.volumetotal} avail",
+  "CEPH_SLOW_REQUEST": ".*? (?<osd>osd.%{NONNEGINT}) .*? (?:%{CEPH_SLOW_REQUEST_SINGLE}|%{CEPH_SLOW_REQUEST_OLDEST}) %{CEPH_SLOW_REQUEST_SECONDS} (?:secs|seconds old)",
+  "CEPH_SLOW_REQUEST_OLDEST": "%{NONNEGINT:ceph.slowrequestnumber} slow requests, .*? oldest blocked for .*?",
+  "CEPH_SLOW_REQUEST_SECONDS": "(?<slowrequestseconds>%{NONNEGINT})(?:\\.%{NONNEGINT})?",
+  "CEPH_SLOW_REQUEST_SINGLE": "slow request"
+}

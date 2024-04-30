@@ -1,0 +1,3 @@
+{
+    "SNOOPY_MSG": "(?:- snoopy\\[%{INT}\\]::\\s+)?\\[uid:%{INT:snoopy.uid}\\s+(username:%{USERNAME_PAT:snoopy.username}\\s+)?sid:%{INT:snoopy.sid}\\s+tty:%{DATA:snoopy.tty}\\s+cwd:%{DATA:snoopy.cwd}\\s+filename:%{DATA:snoopy.executable}\\]:\\s+%{GREEDYDATA:snoopy.command}"
+}

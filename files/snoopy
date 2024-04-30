@@ -1,1 +1,0 @@
-SNOOPY_MSG (?:- snoopy\[%{INT}\]::\s+)?\[uid:%{INT:uid:int}\s+(username:%{USERNAME_PAT}\s+)?sid:%{INT:sid:int}\s+tty:%{DATA:tty}\s+cwd:%{DATA:cwd}\s+filename:%{DATA:executable}\]:\s+%{GREEDYDATA:command}

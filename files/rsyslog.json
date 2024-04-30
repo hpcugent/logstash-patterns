@@ -1,0 +1,6 @@
+{
+"RSYSLOGMESSAGE": "(?:%{GREEDYDATA:syslog_message})",
+"RSYSLOGCUSTOMHEADER": "(?:(?:<%{NONNEGINT:syslog_abspri}>(?:%{NONNEGINT:syslog_version} )?)?(?<syslog_timestamp>%{TIMESTAMP_ISO8601:}|%{SYSLOGTIMESTAMP}))",
+"RSYSLOGPREFIX": " %{RSYSLOGCUSTOMHEADER} %{IPORHOST:syslog_hostname} (?:%{PROG:program}(?:\[%{POSINT:pid}\])?: )?",
+"RSYSLOGCUSTOM": "%{RSYSLOGPREFIX}%{RSYSLOGMESSAGE}"
+}

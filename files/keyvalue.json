@@ -1,0 +1,4 @@
+{
+    "KEY_EQ_VALUE_MSG": "(?:\\s+(?:%{NOTSPACE}=['\"]?%{NOTSPACE}['\"]?))+\\s*$",
+    "KEYVALUE_MSG": "%{KEY_EQ_VALUE_MSG:KEY_EQ_VALUEDATA}"
+}

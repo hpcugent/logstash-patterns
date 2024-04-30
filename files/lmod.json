@@ -1,0 +1,7 @@
+{
+  "LMOD": "%{LMOD_GENERAL}, %{LMOD_LOAD}",
+  "LMOD_GENERAL": "username=%{USERNAME:lmod.username}, cluster=%{DATA:lmod.cluster}, jobid=%{DATA:lmod.jobid}",
+  "LMOD_LOAD": "userload=%{LMOD_USERLOAD:lmod.userload}, module=%{LMOD_MODULE}, fn=%{DATA:lmod.module.filename}",
+  "LMOD_MODULE": "%{DATA:lmod.module.name}/%{DATA:lmod.module.version}",
+  "LMOD_USERLOAD": "(?:yes|no)"
+}
